@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment
+.env
+.venv/
+
+# IDE
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Other
+*.log
+*.tmp
+*.swp
