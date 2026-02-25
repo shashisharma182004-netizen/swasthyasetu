@@ -1,0 +1,439 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "total_diseases": 60,
+    "categories": ["Digestive", "Respiratory", "Cardiovascular", "Metabolic", "Skin", "Neurological", "Musculoskeletal", "Urinary", "Reproductive", "Eye & ENT", "Infectious", "Mental Health", "Blood Disorders", "Liver & Kidney", "Endocrine"],
+    "languages": ["en", "hi"],
+    "last_updated": "2025"
+  },
+  "diseases": {
+    "diabetes_type2": {
+      "id": "DB001",
+      "icd_code": "E11",
+      "category": "Metabolic",
+      "name": { "en": "Type 2 Diabetes", "hi": "टाइप 2 मधुमेह" },
+      "overview": {
+        "en": "A chronic condition where the body doesn't use insulin properly, leading to high blood sugar levels.",
+        "hi": "एक दीर्घकालिक बीमारी जिसमें शरीर इंसुलिन का सही उपयोग नहीं कर पाता, जिससे रक्त शर्करा बढ़ जाती है।"
+      },
+      "symptoms": {
+        "en": ["Excessive thirst", "Frequent urination", "Fatigue", "Blurred vision", "Slow healing wounds", "Numbness in hands/feet"],
+        "hi": ["अत्यधिक प्यास", "बार-बार पेशाब", "थकान", "धुंधली दृष्टि", "घाव धीरे भरना", "हाथ-पैर सुन्न होना"]
+      },
+      "eat": {
+        "en": ["Bitter gourd (karela) - lowers blood sugar", "Fenugreek seeds (methi) - improves insulin sensitivity", "Green leafy vegetables - rich in fiber", "Whole grains (jowar, bajra) - slow glucose release", "Amla (Indian gooseberry) - controls sugar levels", "Turmeric milk - anti-inflammatory"],
+        "hi": ["करेला - रक्त शर्करा कम करता है", "मेथी दाना - इंसुलिन संवेदनशीलता सुधारता है", "हरी पत्तेदार सब्जियां - फाइबर युक्त", "साबुत अनाज (ज्वार, बाजरा) - धीरे ग्लूकोज छोड़ता है", "आंवला - शर्करा नियंत्रित करता है", "हल्दी दूध - सूजन रोधी"]
+      },
+      "avoid": {
+        "en": ["White rice and white bread", "Sugary drinks and sweets", "Fried foods", "Processed snacks", "High-sugar fruits like mango, banana in excess", "Alcohol"],
+        "hi": ["सफेद चावल और मैदा", "मीठे पेय और मिठाई", "तले हुए खाद्य पदार्थ", "प्रोसेस्ड स्नैक्स", "अधिक मात्रा में आम, केला", "शराब"]
+      },
+      "home_remedies": {
+        "en": ["Drink bitter gourd juice on empty stomach daily", "Soak methi seeds overnight, drink water in morning", "Cinnamon (dalchini) tea - half tsp in warm water", "Jamun seed powder with water"],
+        "hi": ["रोज़ सुबह खाली पेट करेले का रस पियें", "रात को मेथी दाना भिगोएं, सुबह पानी पियें", "दालचीनी की चाय - गर्म पानी में आधा चम्मच", "जामुन के बीज का चूर्ण पानी के साथ"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Triphala churna helps digestion and sugar control", "Gudmar (sugar destroyer) herb is traditionally used", "Yoga: Pranayama and Surya Namaskar daily"],
+        "hi": ["त्रिफला चूर्ण पाचन और शर्करा नियंत्रण में मदद करता है", "गुड़मार जड़ी-बूटी पारंपरिक रूप से उपयोग की जाती है", "योग: प्रतिदिन प्राणायाम और सूर्य नमस्कार"]
+      },
+      "medicine_awareness": {
+        "en": "Common medications include Metformin (biguanide class - reduces liver glucose), Glipizide (sulfonylurea - stimulates insulin). Side effects may include nausea, low blood sugar. NEVER self-medicate.",
+        "hi": "सामान्य दवाइयों में मेटफॉर्मिन (लीवर में ग्लूकोज कम करती है) शामिल हैं। दुष्प्रभाव में मतली, रक्त शर्करा कम होना शामिल हो सकते हैं। कभी भी स्वयं दवा न लें।"
+      },
+      "prevention": {
+        "en": ["Maintain healthy weight", "Exercise 30 mins daily", "Eat balanced diet", "Regular blood sugar checkups", "Reduce stress"],
+        "hi": ["स्वस्थ वज़न बनाए रखें", "रोज़ 30 मिनट व्यायाम करें", "संतुलित आहार लें", "नियमित रक्त शर्करा जांच करवाएं", "तनाव कम करें"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: Blood sugar above 300 mg/dL, confusion, chest pain, vision loss, non-healing wounds",
+        "hi": "डॉक्टर से मिलें अगर: रक्त शर्करा 300 mg/dL से अधिक, भ्रम, सीने में दर्द, दृष्टि हानि, घाव न भरना"
+      }
+    },
+    "hypertension": {
+      "id": "DB002",
+      "icd_code": "I10",
+      "category": "Cardiovascular",
+      "name": { "en": "Hypertension (High Blood Pressure)", "hi": "उच्च रक्तचाप" },
+      "overview": {
+        "en": "A condition where blood pressure in the arteries is persistently elevated, increasing risk of heart disease and stroke.",
+        "hi": "एक स्थिति जिसमें धमनियों में रक्तचाप लगातार बढ़ा रहता है, जिससे हृदय रोग और स्ट्रोक का खतरा बढ़ता है।"
+      },
+      "symptoms": {
+        "en": ["Headache", "Dizziness", "Blurred vision", "Shortness of breath", "Nosebleeds (severe cases)", "Chest pain"],
+        "hi": ["सिरदर्द", "चक्कर आना", "धुंधली दृष्टि", "सांस फूलना", "नाक से खून (गंभीर मामलों में)", "सीने में दर्द"]
+      },
+      "eat": {
+        "en": ["Banana - rich in potassium, lowers BP", "Garlic (lahsun) - natural blood pressure reducer", "Cucumber - diuretic, flushes sodium", "Coconut water - electrolyte balance", "Pomegranate juice - reduces arterial stiffness", "Leafy greens like spinach"],
+        "hi": ["केला - पोटेशियम युक्त, BP कम करता है", "लहसुन - प्राकृतिक रक्तचाप कम करने वाला", "खीरा - मूत्रवर्धक, सोडियम बाहर करता है", "नारियल पानी - इलेक्ट्रोलाइट संतुलन", "अनार का रस - धमनी कठोरता कम करता है", "पालक जैसी पत्तेदार सब्जियां"]
+      },
+      "avoid": {
+        "en": ["Salt/sodium in excess", "Pickles and papad", "Processed and packaged foods", "Red meat", "Alcohol and smoking", "Caffeine in excess"],
+        "hi": ["अधिक नमक", "अचार और पापड़", "प्रोसेस्ड और पैकेज्ड खाद्य पदार्थ", "लाल मांस", "शराब और धूम्रपान", "अधिक कैफीन"]
+      },
+      "home_remedies": {
+        "en": ["Garlic clove with warm water in morning", "Methi seed water (soaked overnight)", "Hibiscus (gudhal) tea - proven to lower BP", "Amla juice daily"],
+        "hi": ["सुबह गर्म पानी के साथ लहसुन की कली", "रात भर भिगोया मेथी दाना पानी", "हिबिस्कस (गुड़हल) की चाय - BP कम करने में सिद्ध", "रोज़ आंवला रस"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Ashwagandha reduces stress-related BP", "Arjuna bark tea (Terminalia arjuna) - heart tonic", "Sarpagandha - consult Ayurvedic doctor only"],
+        "hi": ["अश्वगंधा तनाव से संबंधित BP कम करता है", "अर्जुन की छाल की चाय - हृदय टॉनिक", "सर्पगंधा - केवल आयुर्वेदिक डॉक्टर की सलाह से"]
+      },
+      "medicine_awareness": {
+        "en": "Common classes: ACE inhibitors (relax blood vessels), Beta-blockers (slow heart rate), Diuretics (remove excess fluid). Side effects vary. Regular monitoring needed.",
+        "hi": "सामान्य दवा वर्ग: ACE इनहिबिटर (रक्त वाहिकाओं को आराम देते हैं), बीटा-ब्लॉकर (हृदय गति धीमी करते हैं), मूत्रवर्धक। दुष्प्रभाव अलग-अलग होते हैं।"
+      },
+      "prevention": {
+        "en": ["Reduce salt intake to <5g/day", "Exercise regularly", "Maintain healthy weight", "Quit smoking", "Manage stress through yoga/meditation"],
+        "hi": ["नमक की मात्रा <5g/दिन रखें", "नियमित व्यायाम करें", "स्वस्थ वज़न बनाएं", "धूम्रपान छोड़ें", "योग/ध्यान से तनाव प्रबंधन करें"]
+      },
+      "doctor_visit": {
+        "en": "EMERGENCY: BP above 180/120, severe headache, vision loss, chest pain, difficulty speaking",
+        "hi": "आपातकाल: BP 180/120 से अधिक, तेज सिरदर्द, दृष्टि हानि, सीने में दर्द, बोलने में कठिनाई"
+      }
+    },
+    "common_cold": {
+      "id": "DB003",
+      "icd_code": "J00",
+      "category": "Respiratory",
+      "name": { "en": "Common Cold", "hi": "सामान्य सर्दी-जुकाम" },
+      "overview": {
+        "en": "A viral infection of the upper respiratory tract, typically caused by rhinoviruses.",
+        "hi": "ऊपरी श्वसन तंत्र का वायरल संक्रमण, आमतौर पर राइनोवायरस से होता है।"
+      },
+      "symptoms": {
+        "en": ["Runny or stuffy nose", "Sneezing", "Sore throat", "Mild fever", "Cough", "Body ache"],
+        "hi": ["नाक बहना या बंद होना", "छींक आना", "गले में खराश", "हल्का बुखार", "खांसी", "शरीर दर्द"]
+      },
+      "eat": {
+        "en": ["Turmeric milk (haldi doodh) - anti-inflammatory", "Ginger-honey tea - soothes throat", "Chicken soup/dal soup - warmth and nutrition", "Amla - vitamin C boosts immunity", "Garlic - antiviral properties", "Hot kadha (herbal decoction)"],
+        "hi": ["हल्दी दूध - सूजन रोधी", "अदरक-शहद की चाय - गले को आराम देती है", "चिकन सूप/दाल का सूप - गर्माहट और पोषण", "आंवला - विटामिन C रोग प्रतिरोधकता बढ़ाता है", "लहसुन - एंटीवायरल गुण", "गर्म काढ़ा"]
+      },
+      "avoid": {
+        "en": ["Cold drinks and ice cream", "Fried and oily food", "Dairy in excess (increases mucus)", "Cold water", "Processed snacks"],
+        "hi": ["ठंडे पेय और आइसक्रीम", "तले-भुने और तैलीय खाद्य पदार्थ", "अधिक डेयरी (बलगम बढ़ाता है)", "ठंडा पानी", "प्रोसेस्ड स्नैक्स"]
+      },
+      "home_remedies": {
+        "en": ["Steam inhalation with eucalyptus oil or ajwain", "Ginger-tulsi-honey kadha", "Salt water gargling twice daily", "Turmeric milk before bed"],
+        "hi": ["नीलगिरी तेल या अजवाइन के साथ भाप लेना", "अदरक-तुलसी-शहद का काढ़ा", "दिन में दो बार नमक पानी से गरारे", "सोने से पहले हल्दी दूध"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Tulsi (holy basil) is sacred - 5 leaves daily boosts immunity", "Sitopaladi churna - classical Ayurvedic remedy for cold", "Nasya - put 2 drops sesame oil in nostrils"],
+        "hi": ["तुलसी - रोज़ 5 पत्तियां रोग प्रतिरोधकता बढ़ाती हैं", "सितोपलादि चूर्ण - सर्दी के लिए क्लासिक आयुर्वेदिक उपाय", "नास्य - नासिका में 2 बूंद तिल का तेल"]
+      },
+      "medicine_awareness": {
+        "en": "Antihistamines (reduce sneezing/runny nose), Decongestants (open nasal passages), Antipyretics like Paracetamol (fever). Antibiotics DON'T work on viral infections.",
+        "hi": "एंटीहिस्टामिन (छींक/नाक बहना कम करते हैं), डिकंजेस्टेंट (नाक खोलते हैं), पेरासिटामोल (बुखार)। एंटीबायोटिक वायरल संक्रमण पर काम नहीं करते।"
+      },
+      "prevention": {
+        "en": ["Wash hands frequently", "Avoid touching face", "Maintain distance from infected persons", "Boost immunity with vitamin C foods", "Stay warm in cold weather"],
+        "hi": ["बार-बार हाथ धोएं", "चेहरे को छूने से बचें", "संक्रमित व्यक्तियों से दूरी बनाएं", "विटामिन C युक्त खाद्य पदार्थ खाएं", "ठंड में गर्म रहें"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: Fever above 103°F for more than 3 days, difficulty breathing, ear pain, symptoms worsen after 10 days",
+        "hi": "डॉक्टर से मिलें अगर: 3 दिन से अधिक 103°F से ऊपर बुखार, सांस लेने में कठिनाई, कान दर्द, 10 दिन बाद भी लक्षण बिगड़ें"
+      }
+    },
+    "acidity_gerd": {
+      "id": "DB004",
+      "icd_code": "K21",
+      "category": "Digestive",
+      "name": { "en": "Acidity / GERD", "hi": "एसिडिटी / गैस्ट्रोएसोफेगल रिफ्लक्स" },
+      "overview": {
+        "en": "Excess stomach acid or backflow of acid into the esophagus causing burning sensation and discomfort.",
+        "hi": "पेट में अधिक एसिड या एसिड का भोजन नली में वापस आना जिससे जलन और असुविधा होती है।"
+      },
+      "symptoms": {
+        "en": ["Heartburn / chest burning", "Sour belching", "Bloating", "Nausea", "Difficulty swallowing", "Regurgitation"],
+        "hi": ["सीने में जलन", "खट्टी डकार", "पेट फूलना", "मतली", "निगलने में कठिनाई", "खाना वापस आना"]
+      },
+      "eat": {
+        "en": ["Banana - natural antacid", "Coconut water - alkaline, soothes stomach", "Cold milk (if not lactose intolerant)", "Cucumber - cooling effect", "Oatmeal - absorbs acid", "Fennel seeds (saunf) - after meals"],
+        "hi": ["केला - प्राकृतिक एंटासिड", "नारियल पानी - क्षारीय, पेट को शांत करता है", "ठंडा दूध (यदि लैक्टोज असहिष्णुता न हो)", "खीरा - ठंडक देता है", "दलिया - एसिड सोखता है", "भोजन के बाद सौंफ"]
+      },
+      "avoid": {
+        "en": ["Spicy and oily foods", "Citrus fruits (lemon, orange) in excess", "Tea and coffee on empty stomach", "Alcohol and carbonated drinks", "Tomatoes", "Late night eating"],
+        "hi": ["मसालेदार और तैलीय खाना", "अधिक खट्टे फल (नींबू, संतरा)", "खाली पेट चाय और कॉफी", "शराब और कार्बोनेटेड पेय", "टमाटर", "रात को देर से खाना"]
+      },
+      "home_remedies": {
+        "en": ["Jeera (cumin) water after meals", "Saunf with mishri after eating", "Aloe vera juice (2 tbsp) before meals", "Baking soda in water - occasional relief only"],
+        "hi": ["भोजन के बाद जीरे का पानी", "खाने के बाद सौंफ और मिश्री", "भोजन से पहले एलोवेरा जूस (2 चम्मच)", "पानी में बेकिंग सोडा - केवल कभी-कभी राहत के लिए"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Avipattikar churna - classical remedy for hyperacidity", "Licorice (mulethi) tea soothes esophagus", "Eat slowly, chew well - Ayurvedic principle"],
+        "hi": ["अविपत्तिकर चूर्ण - अम्लता के लिए क्लासिक उपाय", "मुलेठी की चाय भोजन नली को शांत करती है", "धीरे खाएं, अच्छे से चबाएं - आयुर्वेदिक सिद्धांत"]
+      },
+      "medicine_awareness": {
+        "en": "Antacids (neutralize acid - quick relief), H2 blockers (reduce acid production), PPIs like Omeprazole (long-term acid control). Overuse of antacids can cause dependency.",
+        "hi": "एंटासिड (एसिड को बेअसर करते हैं - त्वरित राहत), H2 ब्लॉकर (एसिड उत्पादन कम करते हैं), PPI जैसे ओमेप्राजोल। एंटासिड के अत्यधिक उपयोग से निर्भरता हो सकती है।"
+      },
+      "prevention": {
+        "en": ["Eat small frequent meals", "Don't lie down immediately after eating", "Elevate head while sleeping", "Avoid trigger foods", "Maintain healthy weight"],
+        "hi": ["थोड़ा-थोड़ा बार-बार खाएं", "खाने के तुरंत बाद न लेटें", "सोते समय सिर ऊंचा रखें", "ट्रिगर खाद्य पदार्थ से बचें", "स्वस्थ वज़न बनाएं"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: Symptoms daily for weeks, difficulty swallowing, weight loss, blood in vomit/stool, severe chest pain",
+        "hi": "डॉक्टर से मिलें अगर: हफ्तों तक रोज़ लक्षण, निगलने में कठिनाई, वज़न कम होना, उल्टी/मल में खून, तेज सीने में दर्द"
+      }
+    },
+    "anemia": {
+      "id": "DB005",
+      "icd_code": "D50",
+      "category": "Blood Disorders",
+      "name": { "en": "Iron Deficiency Anemia", "hi": "आयरन की कमी से एनीमिया" },
+      "overview": {
+        "en": "A condition where the blood lacks enough healthy red blood cells due to iron deficiency.",
+        "hi": "एक स्थिति जिसमें आयरन की कमी के कारण रक्त में पर्याप्त स्वस्थ लाल रक्त कोशिकाएं नहीं होतीं।"
+      },
+      "symptoms": {
+        "en": ["Fatigue and weakness", "Pale skin", "Shortness of breath", "Dizziness", "Cold hands and feet", "Brittle nails"],
+        "hi": ["थकान और कमज़ोरी", "पीली त्वचा", "सांस फूलना", "चक्कर आना", "ठंडे हाथ-पैर", "कमज़ोर नाखून"]
+      },
+      "eat": {
+        "en": ["Spinach (palak) - high iron content", "Pomegranate - rich in iron and vitamin C", "Beetroot (chukandar) - boosts hemoglobin", "Jaggery (gur) - natural iron source", "Dates (khajoor) - iron-rich", "Sesame seeds (til) with jaggery"],
+        "hi": ["पालक - उच्च आयरन", "अनार - आयरन और विटामिन C", "चुकंदर - हीमोग्लोबिन बढ़ाता है", "गुड़ - प्राकृतिक आयरन स्रोत", "खजूर - आयरन युक्त", "तिल और गुड़"]
+      },
+      "avoid": {
+        "en": ["Tea/coffee with meals (inhibits iron absorption)", "Calcium-rich foods with iron-rich meals", "Phytate-rich foods like raw legumes in excess", "Antacids"],
+        "hi": ["भोजन के साथ चाय/कॉफी (आयरन अवशोषण रोकता है)", "आयरन युक्त भोजन के साथ कैल्शियम युक्त खाद्य पदार्थ", "कच्ची फलियां अधिक मात्रा में", "एंटासिड"]
+      },
+      "home_remedies": {
+        "en": ["Pomegranate juice with mishri daily", "Beetroot-carrot juice morning", "Soak raisins and eat with soaking water", "Gur-chana (jaggery with chickpeas) as snack"],
+        "hi": ["रोज़ अनार का रस और मिश्री", "सुबह चुकंदर-गाजर का रस", "किशमिश भिगोकर पानी के साथ खाएं", "गुड़-चना स्नैक के रूप में"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Dhatri Loha (Ayurvedic iron supplement) - consult vaidya", "Punarnava (Boerhavia diffusa) - blood builder", "Cook in iron vessels to increase iron content of food"],
+        "hi": ["धात्री लोह - वैद्य से परामर्श करें", "पुनर्नवा - रक्त निर्माण में सहायक", "लोहे के बर्तन में पकाने से खाने में आयरन बढ़ता है"]
+      },
+      "medicine_awareness": {
+        "en": "Ferrous sulfate/gluconate tablets are common iron supplements. Take with vitamin C for better absorption. May cause dark stools and constipation. Duration usually 3-6 months.",
+        "hi": "फेरस सल्फेट/ग्लूकोनेट सामान्य आयरन सप्लीमेंट हैं। बेहतर अवशोषण के लिए विटामिन C के साथ लें। काले मल और कब्ज हो सकते हैं।"
+      },
+      "prevention": {
+        "en": ["Eat iron-rich foods regularly", "Pair iron foods with vitamin C", "Regular blood hemoglobin checkups", "Treat underlying causes like worm infestations"],
+        "hi": ["नियमित रूप से आयरन युक्त खाद्य पदार्थ खाएं", "आयरन खाद्य पदार्थ को विटामिन C के साथ लें", "नियमित रक्त हीमोग्लोबिन जांच", "अंतर्निहित कारणों का उपचार करें"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: Extreme fatigue, fainting, irregular heartbeat, HB below 8 g/dL",
+        "hi": "डॉक्टर से मिलें अगर: अत्यधिक थकान, बेहोशी, अनियमित दिल की धड़कन, HB 8 g/dL से कम"
+      }
+    },
+    "thyroid_hypothyroidism": {
+      "id": "DB006",
+      "icd_code": "E03",
+      "category": "Endocrine",
+      "name": { "en": "Hypothyroidism", "hi": "हाइपोथायरायडिज्म (थायरॉइड की कमी)" },
+      "overview": {
+        "en": "A condition where the thyroid gland doesn't produce enough thyroid hormone, slowing metabolism.",
+        "hi": "एक स्थिति जिसमें थायरॉइड ग्रंथि पर्याप्त थायरॉइड हार्मोन नहीं बनाती, जिससे चयापचय धीमा हो जाता है।"
+      },
+      "symptoms": {
+        "en": ["Weight gain", "Fatigue", "Cold sensitivity", "Constipation", "Dry skin and hair loss", "Depression", "Slow heart rate"],
+        "hi": ["वज़न बढ़ना", "थकान", "ठंड के प्रति संवेदनशीलता", "कब्ज", "रूखी त्वचा और बाल झड़ना", "अवसाद", "धीमी हृदय गति"]
+      },
+      "eat": {
+        "en": ["Iodine-rich foods: iodized salt, seafood", "Selenium foods: Brazil nuts, sunflower seeds", "Zinc foods: pumpkin seeds, chickpeas", "Vitamin D: sunlight, fortified milk", "Coconut oil - supports thyroid function", "Guggulu - traditionally used"],
+        "hi": ["आयोडीन युक्त खाद्य पदार्थ: आयोडाइज्ड नमक, समुद्री भोजन", "सेलेनियम: ब्राजील नट, सूरजमुखी के बीज", "जिंक: कद्दू के बीज, चना", "विटामिन D: धूप, फोर्टिफाइड दूध", "नारियल तेल - थायरॉइड कार्य में सहायक", "गुग्गुलु - पारंपरिक उपयोग"]
+      },
+      "avoid": {
+        "en": ["Raw cruciferous vegetables in excess (cabbage, broccoli - affect iodine)", "Soy products in excess", "Gluten (if Hashimoto's related)", "Processed foods", "Excess sugar"],
+        "hi": ["कच्ची क्रूसिफेरस सब्जियां अधिक मात्रा में (गोभी, ब्रोकली - आयोडीन प्रभावित करती हैं)", "सोया उत्पाद अधिक मात्रा में", "ग्लूटेन (हाशिमोटो से संबंधित होने पर)", "प्रोसेस्ड खाद्य पदार्थ", "अधिक चीनी"]
+      },
+      "home_remedies": {
+        "en": ["Ashwagandha milk daily - adaptogen for thyroid", "Coconut oil in cooking", "Adequate sleep - critical for hormone balance"],
+        "hi": ["रोज़ अश्वगंधा दूध - थायरॉइड के लिए एडाप्टोजेन", "खाना पकाने में नारियल तेल", "पर्याप्त नींद - हार्मोन संतुलन के लिए महत्वपूर्ण"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Guggulu Thyroid formulations - consult Ayurvedic doctor", "Kanchanar Guggulu - specific for thyroid", "Avoid Kapha-increasing foods"],
+        "hi": ["गुग्गुलु थायरॉइड फॉर्मूलेशन - आयुर्वेदिक डॉक्टर से परामर्श", "कंचनार गुग्गुलु - थायरॉइड के लिए विशेष", "कफ बढ़ाने वाले खाद्य पदार्थ से बचें"]
+      },
+      "medicine_awareness": {
+        "en": "Levothyroxine (synthetic T4 hormone) is the standard treatment. Must be taken on empty stomach. Regular TSH blood tests needed. Never stop without doctor's advice.",
+        "hi": "लेवोथायरोक्सिन (सिंथेटिक T4 हार्मोन) मानक उपचार है। खाली पेट लेना चाहिए। नियमित TSH रक्त परीक्षण आवश्यक। डॉक्टर की सलाह के बिना कभी बंद न करें।"
+      },
+      "prevention": {
+        "en": ["Adequate iodine intake", "Regular thyroid function tests", "Avoid radiation exposure to neck", "Manage autoimmune conditions"],
+        "hi": ["पर्याप्त आयोडीन का सेवन", "नियमित थायरॉइड फंक्शन टेस्ट", "गर्दन पर विकिरण से बचें", "ऑटोइम्यून स्थितियों का प्रबंधन"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: Extreme fatigue, rapid weight gain, severe depression, swelling in neck, irregular heartbeat",
+        "hi": "डॉक्टर से मिलें अगर: अत्यधिक थकान, तेज़ वज़न वृद्धि, गंभीर अवसाद, गर्दन में सूजन, अनियमित दिल की धड़कन"
+      }
+    },
+    "arthritis": {
+      "id": "DB007",
+      "icd_code": "M06",
+      "category": "Musculoskeletal",
+      "name": { "en": "Arthritis", "hi": "गठिया (जोड़ों का दर्द)" },
+      "overview": {
+        "en": "Inflammation of joints causing pain, stiffness, and reduced range of motion. Includes osteoarthritis and rheumatoid arthritis.",
+        "hi": "जोड़ों में सूजन जिससे दर्द, अकड़न और गतिशीलता कम होती है। इसमें ऑस्टियोआर्थराइटिस और रूमेटाइड आर्थराइटिस शामिल हैं।"
+      },
+      "symptoms": {
+        "en": ["Joint pain and swelling", "Morning stiffness", "Reduced range of motion", "Warmth around joints", "Fatigue", "Deformity in severe cases"],
+        "hi": ["जोड़ों में दर्द और सूजन", "सुबह की अकड़न", "गतिशीलता में कमी", "जोड़ों के आसपास गर्माहट", "थकान", "गंभीर मामलों में विकृति"]
+      },
+      "eat": {
+        "en": ["Turmeric with black pepper - curcumin is anti-inflammatory", "Ginger tea - natural anti-inflammatory", "Omega-3 rich foods: flaxseeds, walnuts", "Green leafy vegetables - antioxidants", "Garlic - sulfur compounds reduce inflammation", "Tart cherry juice - proven anti-inflammatory"],
+        "hi": ["काली मिर्च के साथ हल्दी - करक्यूमिन सूजन रोधी है", "अदरक की चाय - प्राकृतिक सूजन रोधी", "ओमेगा-3 युक्त: अलसी, अखरोट", "हरी पत्तेदार सब्जियां - एंटीऑक्सीडेंट", "लहसुन - सल्फर यौगिक सूजन कम करते हैं", "खट्टी चेरी का रस"]
+      },
+      "avoid": {
+        "en": ["Fried and processed foods", "Red meat", "Refined carbohydrates", "Alcohol", "High-purine foods (for gout arthritis)", "Nightshades (tomato, eggplant) - debated"],
+        "hi": ["तले और प्रोसेस्ड खाद्य पदार्थ", "लाल मांस", "परिष्कृत कार्बोहाइड्रेट", "शराब", "उच्च प्यूरीन खाद्य पदार्थ (गठिया के लिए)", "नाइटशेड (टमाटर, बैंगन)"]
+      },
+      "home_remedies": {
+        "en": ["Turmeric-ginger paste warm compress", "Mustard oil massage with garlic", "Epsom salt (sendha namak) warm water soak", "Castor oil (arandi) massage"],
+        "hi": ["हल्दी-अदरक पेस्ट का गर्म सेक", "लहसुन के साथ सरसों के तेल की मालिश", "सेंधा नमक गर्म पानी में भिगोना", "अरंडी के तेल की मालिश"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Shallaki (Boswellia) - potent anti-inflammatory", "Maharasnadi Kwath - for joint disorders", "Panchakarma therapy - consult Ayurvedic expert", "Abhyanga (oil massage) daily"],
+        "hi": ["शल्लकी (बोसवेलिया) - शक्तिशाली सूजन रोधी", "महारास्नादि क्वाथ - जोड़ों की बीमारी के लिए", "पंचकर्म चिकित्सा - आयुर्वेदिक विशेषज्ञ से परामर्श", "अभ्यंग (तेल मालिश) रोज़"]
+      },
+      "medicine_awareness": {
+        "en": "NSAIDs (reduce pain and inflammation), DMARDs for RA (slow disease progression), Corticosteroids (short-term flare control). Long-term NSAID use can affect kidneys and stomach.",
+        "hi": "NSAIDs (दर्द और सूजन कम करते हैं), RA के लिए DMARDs (रोग की प्रगति धीमी करते हैं), कॉर्टिकोस्टेरॉइड। दीर्घकालिक NSAID उपयोग गुर्दे और पेट को प्रभावित कर सकता है।"
+      },
+      "prevention": {
+        "en": ["Maintain healthy weight", "Low-impact exercise (swimming, yoga)", "Protect joints from injury", "Anti-inflammatory diet", "Regular checkups if family history"],
+        "hi": ["स्वस्थ वज़न बनाएं", "कम प्रभाव वाला व्यायाम (तैराकी, योग)", "जोड़ों को चोट से बचाएं", "सूजन रोधी आहार", "पारिवारिक इतिहास हो तो नियमित जांच"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: Severe joint pain, sudden swelling, fever with joint pain, inability to bear weight, joint deformity",
+        "hi": "डॉक्टर से मिलें अगर: तेज जोड़ दर्द, अचानक सूजन, जोड़ दर्द के साथ बुखार, वज़न सहन करने में असमर्थता, जोड़ विकृति"
+      }
+    },
+    "obesity": {
+      "id": "DB008",
+      "icd_code": "E66",
+      "category": "Metabolic",
+      "name": { "en": "Obesity / Overweight", "hi": "मोटापा / अधिक वज़न" },
+      "overview": {
+        "en": "Excess body fat accumulation that presents risk factors for health, defined as BMI above 30.",
+        "hi": "शरीर में अत्यधिक वसा संचय जो स्वास्थ्य के लिए खतरनाक है, BMI 30 से अधिक को मोटापा कहते हैं।"
+      },
+      "symptoms": {
+        "en": ["Excess body weight", "Shortness of breath on exertion", "Joint pain", "Fatigue", "Sleep apnea", "Low self-esteem"],
+        "hi": ["अधिक शरीर भार", "परिश्रम पर सांस फूलना", "जोड़ दर्द", "थकान", "नींद में सांस रुकना", "कम आत्मसम्मान"]
+      },
+      "eat": {
+        "en": ["Moong dal - high protein, low calorie", "Methi leaves - metabolism boost", "Jeera water on empty stomach - fat burning", "Green vegetables - filling, low calorie", "Buttermilk (chaas) - probiotic, filling", "Chia seeds - fiber rich, appetite control"],
+        "hi": ["मूंग दाल - उच्च प्रोटीन, कम कैलोरी", "मेथी के पत्ते - चयापचय बढ़ाते हैं", "खाली पेट जीरे का पानी - वसा जलाना", "हरी सब्जियां - भरती हैं, कम कैलोरी", "छाछ - प्रोबायोटिक, भरती है", "चिया बीज - फाइबर युक्त, भूख नियंत्रण"]
+      },
+      "avoid": {
+        "en": ["Maida products (bread, naan, biscuits)", "Sugary beverages", "Deep fried snacks", "Packaged and processed foods", "Excess rice and potato", "Late night eating"],
+        "hi": ["मैदा उत्पाद (ब्रेड, नान, बिस्किट)", "मीठे पेय पदार्थ", "गहरे तले स्नैक्स", "पैकेज्ड और प्रोसेस्ड खाद्य पदार्थ", "अधिक चावल और आलू", "रात को देर से खाना"]
+      },
+      "home_remedies": {
+        "en": ["Jeera (cumin) water every morning", "Lemon-honey warm water on empty stomach", "Green tea with ginger", "Triphala water at night"],
+        "hi": ["हर सुबह जीरे का पानी", "खाली पेट नींबू-शहद गर्म पानी", "अदरक के साथ हरी चाय", "रात को त्रिफला पानी"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Triphala - excellent for metabolism and digestion", "Guggulu - fat metabolism", "Medohar Vati - Ayurvedic weight management", "Udvartana (dry powder massage) - traditional therapy"],
+        "hi": ["त्रिफला - चयापचय और पाचन के लिए उत्कृष्ट", "गुग्गुलु - वसा चयापचय", "मेदोहर वटी - आयुर्वेदिक वज़न प्रबंधन", "उद्वर्तन (सूखे चूर्ण की मालिश) - पारंपरिक चिकित्सा"]
+      },
+      "medicine_awareness": {
+        "en": "Weight loss medications (Orlistat, etc.) are prescribed only when diet/exercise fail. They have significant side effects. Weight loss surgery (bariatric) for severe cases. Always doctor-supervised.",
+        "hi": "वज़न घटाने की दवाएं केवल तब दी जाती हैं जब आहार/व्यायाम विफल हो। इनके महत्वपूर्ण दुष्प्रभाव होते हैं। गंभीर मामलों में बेरिएट्रिक सर्जरी। हमेशा डॉक्टर की निगरानी में।"
+      },
+      "prevention": {
+        "en": ["Regular physical activity 45-60 mins daily", "Portion control", "Mindful eating", "Sleep 7-8 hours", "Limit screen time and sedentary behavior"],
+        "hi": ["रोज़ 45-60 मिनट शारीरिक गतिविधि", "खाने की मात्रा पर नियंत्रण", "सचेत खाना", "7-8 घंटे नींद", "स्क्रीन समय और बैठे रहने को सीमित करें"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: BMI above 35, obesity-related complications (diabetes, sleep apnea, BP), extreme fatigue, psychological distress",
+        "hi": "डॉक्टर से मिलें अगर: BMI 35 से अधिक, मोटापे से संबंधित जटिलताएं, अत्यधिक थकान, मनोवैज्ञानिक संकट"
+      }
+    },
+    "dengue": {
+      "id": "DB009",
+      "icd_code": "A90",
+      "category": "Infectious",
+      "name": { "en": "Dengue Fever", "hi": "डेंगू बुखार" },
+      "overview": {
+        "en": "A mosquito-borne viral disease causing high fever, severe headache, and muscle pain, spread by Aedes mosquitoes.",
+        "hi": "एक मच्छर जनित वायरल बीमारी जो एडीज मच्छरों से फैलती है, जिसमें तेज बुखार, गंभीर सिरदर्द और मांसपेशी दर्द होता है।"
+      },
+      "symptoms": {
+        "en": ["Sudden high fever (104°F)", "Severe headache", "Pain behind eyes", "Muscle and joint pain", "Skin rash", "Low platelet count"],
+        "hi": ["अचानक तेज बुखार (104°F)", "गंभीर सिरदर्द", "आंखों के पीछे दर्द", "मांसपेशी और जोड़ दर्द", "त्वचा पर चकत्ते", "प्लेटलेट काउंट कम होना"]
+      },
+      "eat": {
+        "en": ["Papaya leaf juice - proven to increase platelets", "Coconut water - hydration and electrolytes", "Pomegranate juice - boosts blood cell production", "Kiwi and citrus - vitamin C for immunity", "Light khichdi and dal - easy to digest", "Turmeric milk - immunity"],
+        "hi": ["पपीते के पत्ते का रस - प्लेटलेट बढ़ाने में सिद्ध", "नारियल पानी - हाइड्रेशन और इलेक्ट्रोलाइट", "अनार का रस - रक्त कोशिका उत्पादन बढ़ाता है", "कीवी और खट्टे फल - विटामिन C", "हल्की खिचड़ी और दाल - पचाने में आसान", "हल्दी दूध - रोग प्रतिरोधकता"]
+      },
+      "avoid": {
+        "en": ["Oily and spicy foods", "Solid heavy meals", "Alcohol", "Aspirin and ibuprofen (increase bleeding risk)", "Cold foods"],
+        "hi": ["तैलीय और मसालेदार खाद्य पदार्थ", "भारी खाना", "शराब", "एस्पिरिन और इबुप्रोफेन (रक्तस्राव का खतरा बढ़ाते हैं)", "ठंडे खाद्य पदार्थ"]
+      },
+      "home_remedies": {
+        "en": ["Papaya leaf juice 2-3 tablespoons twice daily (supportive)", "Giloy (guduchi) juice - immunity booster", "Neem leaf decoction - antiviral properties"],
+        "hi": ["पपीते के पत्ते का रस दिन में दो बार 2-3 चम्मच (सहायक)", "गिलोय (गुडूची) रस - रोग प्रतिरोधक क्षमता बढ़ाने वाला", "नीम के पत्ते का काढ़ा - एंटीवायरल गुण"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Giloy is considered rasayana (rejuvenative) in Ayurveda", "Sudarshan Kwath - fever management", "Adequate rest is paramount"],
+        "hi": ["गिलोय आयुर्वेद में रसायन माना जाता है", "सुदर्शन क्वाथ - बुखार प्रबंधन", "पर्याप्त आराम अत्यंत आवश्यक"]
+      },
+      "medicine_awareness": {
+        "en": "Paracetamol is used for fever - SAFE. NEVER use Aspirin or Ibuprofen in dengue - increases bleeding risk. Platelet transfusion only in severe cases. Hospitalization may be required.",
+        "hi": "पेरासिटामोल बुखार के लिए - सुरक्षित। डेंगू में एस्पिरिन या इबुप्रोफेन कभी न लें - रक्तस्राव का खतरा बढ़ाते हैं। गंभीर मामलों में प्लेटलेट ट्रांसफ्यूजन।"
+      },
+      "prevention": {
+        "en": ["Eliminate stagnant water around home", "Use mosquito nets and repellents", "Wear full-sleeve clothing", "Use mosquito coils in evenings", "Community fumigation"],
+        "hi": ["घर के आसपास रुके पानी को खत्म करें", "मच्छरदानी और रिपेलेंट का उपयोग", "पूरी आस्तीन के कपड़े पहनें", "शाम को मच्छर कॉइल का उपयोग", "सामुदायिक धुआं करना"]
+      },
+      "doctor_visit": {
+        "en": "SEEK IMMEDIATE CARE if: Platelet below 50,000, bleeding gums/nose, blood in urine/stool, severe abdominal pain, vomiting blood",
+        "hi": "तुरंत चिकित्सा सहायता लें अगर: प्लेटलेट 50,000 से कम, मसूड़े/नाक से खून, मूत्र/मल में खून, गंभीर पेट दर्द, खून की उल्टी"
+      }
+    },
+    "constipation": {
+      "id": "DB010",
+      "icd_code": "K59.0",
+      "category": "Digestive",
+      "name": { "en": "Constipation", "hi": "कब्ज" },
+      "overview": {
+        "en": "Infrequent bowel movements (less than 3 times per week), hard stools, and difficulty passing stools.",
+        "hi": "सप्ताह में 3 बार से कम मल त्याग, कठोर मल और मल त्याग में कठिनाई।"
+      },
+      "symptoms": {
+        "en": ["Infrequent bowel movements", "Hard, dry stools", "Straining during defecation", "Feeling of incomplete evacuation", "Bloating", "Abdominal discomfort"],
+        "hi": ["कम बार मल त्याग", "कठोर, सूखा मल", "मल त्याग में जोर लगाना", "अधूरे मल त्याग की भावना", "पेट फूलना", "पेट में असुविधा"]
+      },
+      "eat": {
+        "en": ["Papaya - natural digestive enzyme papain", "Prunes (alu bukhara) - sorbitol promotes bowel movement", "Flaxseeds - soluble fiber", "Isabgol (psyllium husk) with warm water", "Ghee with warm milk at night", "High-fiber foods: whole grains, vegetables"],
+        "hi": ["पपीता - प्राकृतिक पाचन एंजाइम पपाइन", "आलू बुखारा - सोर्बिटोल मल त्याग को बढ़ावा देता है", "अलसी - घुलनशील फाइबर", "गर्म पानी के साथ इसबगोल", "रात में घी के साथ गर्म दूध", "उच्च फाइबर: साबुत अनाज, सब्जियां"]
+      },
+      "avoid": {
+        "en": ["Maida and processed foods", "Dairy in excess", "Bananas (unripe)", "Alcohol", "Caffeinated beverages", "Low-fiber foods"],
+        "hi": ["मैदा और प्रोसेस्ड खाद्य पदार्थ", "अधिक डेयरी", "कच्चा केला", "शराब", "कैफीनयुक्त पेय", "कम फाइबर वाले खाद्य पदार्थ"]
+      },
+      "home_remedies": {
+        "en": ["Isabgol 1 tbsp in warm water/milk before bed", "Triphala churna at night with warm water", "Warm water with lemon and honey in morning", "Ghee in hot milk before sleep"],
+        "hi": ["सोने से पहले गर्म पानी/दूध में 1 चम्मच इसबगोल", "रात में गर्म पानी के साथ त्रिफला चूर्ण", "सुबह नींबू और शहद के साथ गर्म पानी", "सोने से पहले गर्म दूध में घी"]
+      },
+      "ayurvedic_tips": {
+        "en": ["Triphala is the gold standard Ayurvedic remedy", "Haritaki (one of three fruits in Triphala) - excellent laxative", "Castor oil - strong but effective (occasional use)", "Practice toilet routine at same time daily"],
+        "hi": ["त्रिफला मानक आयुर्वेदिक उपाय है", "हरीतकी (त्रिफला में तीन फलों में से एक) - उत्कृष्ट विरेचक", "अरंडी का तेल - मजबूत लेकिन प्रभावी (कभी-कभी)", "हर दिन एक ही समय पर शौचालय जाने की आदत बनाएं"]
+      },
+      "medicine_awareness": {
+        "en": "Bulk laxatives (psyllium), Osmotic laxatives (Lactulose), Stimulant laxatives (Senna) - use short-term only. Overuse causes dependency. Address underlying cause.",
+        "hi": "बल्क लैक्सेटिव (साइलियम), ऑस्मोटिक लैक्सेटिव (लैक्टुलोज), स्टिमुलेंट लैक्सेटिव (सेना) - केवल अल्पकालिक उपयोग। अत्यधिक उपयोग से निर्भरता। अंतर्निहित कारण का समाधान करें।"
+      },
+      "prevention": {
+        "en": ["Drink 8-10 glasses of water daily", "Eat high-fiber diet", "Exercise regularly", "Don't ignore urge to defecate", "Establish regular toilet routine"],
+        "hi": ["रोज़ 8-10 गिलास पानी पियें", "उच्च फाइबर आहार खाएं", "नियमित व्यायाम करें", "मल त्याग की इच्छा को नजरअंदाज न करें", "नियमित शौचालय दिनचर्या बनाएं"]
+      },
+      "doctor_visit": {
+        "en": "See doctor if: No bowel movement for 3+ weeks, blood in stool, severe pain, unexplained weight loss, new constipation after age 50",
+        "hi": "डॉक्टर से मिलें अगर: 3+ हफ्ते से मल त्याग नहीं, मल में खून, गंभीर दर्द, अस्पष्टीकृत वज़न कम होना, 50 के बाद नई कब्ज"
+      }
+    }
+  },
+  "emergency_symptoms": {
+    "en": ["Chest pain or tightness", "Difficulty breathing", "Loss of consciousness", "Severe bleeding that won't stop", "Pregnancy complications", "Stroke symptoms (face drooping, arm weakness, speech difficulty)", "Severe allergic reaction"],
+    "hi": ["सीने में दर्द या जकड़न", "सांस लेने में कठिनाई", "बेहोशी", "न रुकने वाला गंभीर रक्तस्राव", "गर्भावस्था की जटिलताएं", "स्ट्रोक लक्षण (चेहरा झुकना, बांह कमज़ोरी, बोलने में कठिनाई)", "गंभीर एलर्जी प्रतिक्रिया"]
+  },
+  "disclaimer": {
+    "en": "This information is for educational purposes only and does not replace professional medical advice. Always consult a qualified doctor or healthcare provider for diagnosis and treatment.",
+    "hi": "यह जानकारी केवल शैक्षणिक उद्देश्यों के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। निदान और उपचार के लिए हमेशा एक योग्य डॉक्टर या स्वास्थ्य सेवा प्रदाता से परामर्श करें।"
+  }
+}

@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwasthyaSetu AI – Trustworthy Health Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Crimson+Pro:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --saffron: #E8721C;
+  --saffron-light: #F5A04A;
+  --green-india: #138808;
+  --green-light: #1EA80A;
+  --cream: #FDF6EC;
+  --cream-dark: #F5E8D3;
+  --ink: #1A1208;
+  --ink-soft: #3D2B0F;
+  --white: #FFFDF9;
+  --border: rgba(232,114,28,0.25);
+  --shadow: 0 4px 24px rgba(232,114,28,0.12);
+  --shadow-lg: 0 16px 64px rgba(26,18,8,0.18);
+  --red-alert: #C0392B;
+  --card-bg: rgba(255,253,249,0.95);
+  --eat-color: #138808;
+  --avoid-color: #C0392B;
+  --remedy-color: #8B5E0A;
+  --ayur-color: #5B3A8F;
+  --med-color: #1A5F7A;
+  --prev-color: #2E7D32;
+  --doctor-color: #C62828;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background Pattern */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232,114,28,0.08) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E8721C' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, var(--ink) 0%, #2A1A06 100%);
+  color: var(--cream);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  border-bottom: 1px solid rgba(232,114,28,0.3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--saffron);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 16px rgba(232,114,28,0.4);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-main {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--saffron-light), var(--cream));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.logo-tagline {
+  font-size: 11px;
+  color: rgba(255,253,249,0.6);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: 'DM Mono', monospace;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lang-toggle {
+  display: flex;
+  background: rgba(255,253,249,0.08);
+  border-radius: 24px;
+  padding: 3px;
+  border: 1px solid rgba(232,114,28,0.3);
+}
+
+.lang-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+  color: rgba(255,253,249,0.7);
+  background: transparent;
+}
+
+.lang-btn.active {
+  background: var(--saffron);
+  color: white;
+  font-weight: 600;
+}
+
+.disclaimer-badge {
+  background: rgba(192,57,43,0.2);
+  border: 1px solid rgba(192,57,43,0.4);
+  color: #F5A04A;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* HERO SEARCH */
+.hero {
+  padding: 48px 32px 36px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero-title span {
+  color: var(--saffron);
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.search-container {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 2px solid var(--saffron);
+  border-radius: 16px;
+  padding: 4px 4px 4px 20px;
+  box-shadow: var(--shadow-lg), 0 0 0 4px rgba(232,114,28,0.08);
+  transition: box-shadow 0.3s;
+}
+
+.search-box:focus-within {
+  box-shadow: var(--shadow-lg), 0 0 0 6px rgba(232,114,28,0.15);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  color: var(--ink);
+  background: transparent;
+  padding: 12px 0;
+}
+
+.search-input::placeholder { color: rgba(61,43,15,0.4); }
+
+.search-btn {
+  background: var(--saffron);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s;
+  white-space: nowrap;
+  font-family: 'Crimson Pro', serif;
+}
+
+.search-btn:hover {
+  background: var(--ink);
+  transform: translateY(-1px);
+}
+
+.search-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0; right: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  overflow: hidden;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.15s;
+  font-size: 16px;
+}
+
+.suggestion-item:hover { background: var(--cream); }
+.suggestion-item:last-child { border-bottom: none; }
+
+.suggestion-cat {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--saffron);
+  background: rgba(232,114,28,0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* QUICK CATEGORIES */
+.quick-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.quick-cat-btn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--ink-soft);
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-cat-btn:hover {
+  border-color: var(--saffron);
+  background: rgba(232,114,28,0.08);
+  color: var(--saffron);
+}
+
+/* EMERGENCY BANNER */
+.emergency-banner {
+  background: linear-gradient(135deg, #7B1A1A, #C0392B);
+  color: white;
+  padding: 14px 32px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 3px solid #FF6B6B;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.3px;
+}
+
+.emergency-banner strong { color: #FFD700; }
+
+/* MAIN CONTENT */
+.main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* LOADING */
+.loading-state {
+  text-align: center;
+  padding: 80px 32px;
+  display: none;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.loading-dot {
+  width: 14px; height: 14px;
+  background: var(--saffron);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+.loading-dot:nth-child(2) { animation-delay: 0.2s; }
+.loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.loading-text { font-size: 18px; color: var(--ink-soft); font-style: italic; }
+
+/* RESULT CARD */
+.result-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.5s ease-out;
+  display: none;
+  margin-top: 8px;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.disease-header {
+  background: linear-gradient(135deg, var(--ink) 0%, #2A1A06 100%);
+  padding: 28px 36px;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.disease-title-block {}
+
+.disease-name {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--saffron-light);
+  line-height: 1.1;
+}
+
+.disease-name-hindi {
+  font-size: 20px;
+  color: rgba(255,253,249,0.7);
+  font-family: 'Tiro Devanagari Hindi', serif;
+  margin-top: 4px;
+}
+
+.disease-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.meta-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.meta-icd { background: rgba(232,114,28,0.25); color: var(--saffron-light); }
+.meta-cat { background: rgba(19,136,8,0.25); color: #4ADE80; }
+
+.disease-emoji { font-size: 56px; line-height: 1; flex-shrink: 0; }
+
+.disease-overview {
+  padding: 24px 36px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(232,114,28,0.04);
+}
+
+.overview-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* SECTIONS GRID */
+.sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+@media (max-width: 768px) {
+  .sections-grid { grid-template-columns: 1fr; }
+  .disease-header { flex-direction: column; }
+  .header-top { padding: 12px 16px; }
+  .hero { padding: 32px 16px 24px; }
+  .main-content { padding: 0 12px 40px; }
+}
+
+.section-block {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.section-block:nth-child(even) { border-right: none; }
+.section-block:last-child,
+.section-block:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.section-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: 'DM Mono', monospace;
+}
+
+.section-title-hindi {
+  font-size: 12px;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-weight: 400;
+  opacity: 0.7;
+  display: block;
+}
+
+/* Section specific colors */
+.section-symptoms .section-icon { background: rgba(255,165,0,0.15); }
+.section-symptoms .section-title { color: #B8860B; }
+
+.section-eat .section-icon { background: rgba(19,136,8,0.12); }
+.section-eat .section-title { color: var(--eat-color); }
+
+.section-avoid .section-icon { background: rgba(192,57,43,0.1); }
+.section-avoid .section-title { color: var(--avoid-color); }
+
+.section-remedies .section-icon { background: rgba(139,94,10,0.12); }
+.section-remedies .section-title { color: var(--remedy-color); }
+
+.section-ayurveda .section-icon { background: rgba(91,58,143,0.1); }
+.section-ayurveda .section-title { color: var(--ayur-color); }
+
+.section-medicine .section-icon { background: rgba(26,95,122,0.1); }
+.section-medicine .section-title { color: var(--med-color); }
+
+.section-prevention .section-icon { background: rgba(46,125,50,0.1); }
+.section-prevention .section-title { color: var(--prev-color); }
+
+.section-doctor .section-icon { background: rgba(198,40,40,0.1); }
+.section-doctor .section-title { color: var(--doctor-color); }
+
+/* Content items */
+.item-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+.item-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.item-bullet {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.eat-bullet { background: rgba(19,136,8,0.15); color: var(--eat-color); }
+.avoid-bullet { background: rgba(192,57,43,0.12); color: var(--avoid-color); }
+.default-bullet { background: rgba(232,114,28,0.15); color: var(--saffron); }
+
+.medicine-text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  background: rgba(26,95,122,0.05);
+  padding: 14px;
+  border-radius: 10px;
+  border-left: 3px solid var(--med-color);
+}
+
+.doctor-alert {
+  background: rgba(192,57,43,0.08);
+  border: 1.5px solid rgba(192,57,43,0.3);
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--doctor-color);
+  font-weight: 500;
+}
+
+/* FULL WIDTH SECTIONS */
+.section-full {
+  padding: 24px 36px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* DISCLAIMER */
+.disclaimer-block {
+  background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+  border-top: 3px solid var(--saffron);
+  padding: 20px 36px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.disclaimer-icon { font-size: 24px; flex-shrink: 0; }
+
+.disclaimer-text {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.disclaimer-text strong { color: var(--saffron); font-style: normal; }
+
+/* WELCOME STATE */
+.welcome-state {
+  padding: 40px 24px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.category-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-card:hover {
+  border-color: var(--saffron);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  background: rgba(232,114,28,0.04);
+}
+
+.category-emoji { font-size: 36px; }
+
+.category-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.category-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--saffron);
+  background: rgba(232,114,28,0.1);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.section-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.section-subheading {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 16px;
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+/* SPINNER */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ERROR STATE */
+.error-state {
+  background: rgba(192,57,43,0.06);
+  border: 1.5px solid rgba(192,57,43,0.3);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  display: none;
+  margin-top: 16px;
+}
+
+.error-icon { font-size: 48px; margin-bottom: 16px; }
+.error-text { font-size: 18px; color: var(--ink-soft); }
+
+/* AI CONTENT */
+.ai-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 12px 0 6px;
+}
+
+.ai-content p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.ai-content ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.ai-content ul li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding-left: 20px;
+  position: relative;
+}
+
+.ai-content ul li::before {
+  content: '•';
+  color: var(--saffron);
+  position: absolute;
+  left: 6px;
+}
+
+/* Chat history */
+.chat-history {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+/* SEARCH HISTORY TAG */
+.search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.search-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--ink-soft);
+}
+
+.search-tag:hover {
+  border-color: var(--saffron);
+  background: rgba(232,114,28,0.06);
+  color: var(--saffron);
+}
+
+.tag-remove {
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.tag-remove:hover { opacity: 1; color: red; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">🌿</div>
+      <div class="logo-text">
+        <span class="logo-main">SwasthyaSetu AI</span>
+        <span class="logo-tagline">Trustworthy Health Guidance · स्वास्थ्य सेतु</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">English</button>
+        <button class="lang-btn" onclick="setLang('hi')">हिंदी</button>
+      </div>
+      <div class="disclaimer-badge">🩺 Educational Only</div>
+    </div>
+  </div>
+  <div class="emergency-banner">
+    ⚠️ <strong>EMERGENCY:</strong> Chest pain · Breathing difficulty · Unconsciousness · Heavy bleeding · Pregnancy complications → 
+    <strong>Call 108 / Go to Emergency Room IMMEDIATELY</strong>
+  </div>
+</header>
+
+<div class="hero">
+  <h1 class="hero-title">
+    Your <span>AI Health Guide</span><br>for Every Indian Home
+  </h1>
+  <p class="hero-subtitle">Diet plans, home remedies & health awareness — in your language</p>
+  
+  <div class="search-container">
+    <div class="search-box">
+      <input 
+        type="text" 
+        class="search-input" 
+        id="searchInput"
+        placeholder="Search disease, e.g. Diabetes, Thyroid, Acidity..."
+        autocomplete="off"
+        oninput="handleInput(this.value)"
+        onkeydown="handleKeydown(event)"
+      >
+      <button class="search-btn" id="searchBtn" onclick="doSearch()">
+        <span id="searchBtnText">🔍 Search</span>
+      </button>
+    </div>
+    <div class="suggestions" id="suggestions" style="display:none;"></div>
+  </div>
+
+  <div class="quick-cats">
+    <button class="quick-cat-btn" onclick="quickSearch('Diabetes')">🍬 Diabetes</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Hypertension')">❤️ BP</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Acidity')">🔥 Acidity</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Thyroid')">🦋 Thyroid</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Anemia')">🩸 Anemia</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Arthritis')">🦴 Arthritis</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Dengue')">🦟 Dengue</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Obesity')">⚖️ Obesity</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Constipation')">🌿 Constipation</button>
+    <button class="quick-cat-btn" onclick="quickSearch('Common Cold')">🤧 Cold</button>
+  </div>
+</div>
+
+<div class="main-content">
+  
+  <!-- LOADING -->
+  <div class="loading-state" id="loadingState">
+    <div class="loading-dots">
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+    </div>
+    <p class="loading-text" id="loadingText">Consulting health knowledge base...</p>
+  </div>
+
+  <!-- ERROR -->
+  <div class="error-state" id="errorState">
+    <div class="error-icon">⚠️</div>
+    <p class="error-text" id="errorText"></p>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-card" id="resultCard"></div>
+
+  <!-- WELCOME -->
+  <div class="welcome-state" id="welcomeState">
+    <p class="section-heading">Browse by Health Category</p>
+    <p class="section-subheading">स्वास्थ्य श्रेणी के अनुसार खोजें</p>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+
+</div>
+
+<script>
+// ==================== DATA ====================
+const DISEASES_DB = {
+  "diabetes_type2": {
+    "id": "DB001", "icd_code": "E11", "category": "Metabolic",
+    "name": {"en": "Type 2 Diabetes", "hi": "टाइप 2 मधुमेह"},
+    "emoji": "🍬",
+    "overview": {"en": "A chronic condition where the body doesn't use insulin properly, leading to high blood sugar levels.", "hi": "एक दीर्घकालिक बीमारी जिसमें शरीर इंसुलिन का सही उपयोग नहीं कर पाता।"},
+    "symptoms": {"en": ["Excessive thirst", "Frequent urination", "Fatigue and weakness", "Blurred vision", "Slow healing wounds", "Numbness in hands/feet"], "hi": ["अत्यधिक प्यास", "बार-बार पेशाब", "थकान और कमज़ोरी", "धुंधली दृष्टि", "घाव धीरे भरना", "हाथ-पैर सुन्न होना"]},
+    "eat": {"en": ["Bitter gourd (karela) - lowers blood sugar naturally", "Fenugreek seeds (methi) - improves insulin sensitivity", "Green leafy vegetables - rich in fiber and nutrients", "Whole grains (jowar, bajra) - slow glucose release", "Amla (Indian gooseberry) - controls sugar levels", "Turmeric milk - anti-inflammatory support"], "hi": ["करेला - रक्त शर्करा कम करता है", "मेथी दाना - इंसुलिन संवेदनशीलता सुधारता है", "हरी पत्तेदार सब्जियां - फाइबर युक्त", "साबुत अनाज (ज्वार, बाजरा)", "आंवला - शर्करा नियंत्रित करता है", "हल्दी दूध - सूजन रोधी"]},
+    "avoid": {"en": ["White rice and white bread (maida)", "Sugary drinks, sweets and mithai", "Fried foods like samosa, pakora", "Processed packaged snacks", "High-sugar fruits (mango, banana) in excess", "Alcohol"], "hi": ["सफेद चावल और मैदा", "मीठे पेय और मिठाई", "तले हुए खाद्य पदार्थ", "प्रोसेस्ड स्नैक्स", "अधिक मात्रा में आम, केला", "शराब"]},
+    "home_remedies": {"en": ["Drink bitter gourd (karela) juice on empty stomach daily", "Soak methi seeds overnight, drink the water in morning", "Cinnamon (dalchini) tea - half tsp in warm water", "Jamun seed powder with water - traditional remedy"], "hi": ["रोज़ सुबह खाली पेट करेले का रस", "रात को मेथी दाना भिगोएं, सुबह पानी पियें", "दालचीनी की चाय - गर्म पानी में आधा चम्मच", "जामुन के बीज का चूर्ण पानी के साथ"]},
+    "ayurvedic_tips": {"en": ["Triphala churna helps digestion and sugar control", "Gudmar herb (sugar destroyer) is traditionally used", "Daily Pranayama and Surya Namaskar yoga"], "hi": ["त्रिफला चूर्ण पाचन और शर्करा नियंत्रण", "गुड़मार जड़ी-बूटी परंपरागत उपयोग", "प्रतिदिन प्राणायाम और सूर्य नमस्कार"]},
+    "medicine_awareness": {"en": "Common medications include Metformin (biguanide class - reduces liver glucose production) and Glipizide (sulfonylurea - stimulates insulin release). Possible side effects include nausea, diarrhea, and low blood sugar. Regular HbA1c testing every 3 months is recommended. NEVER self-medicate.", "hi": "सामान्य दवाइयों में मेटफॉर्मिन (लीवर में ग्लूकोज कम करती है) और ग्लिपिज़ाइड शामिल हैं। दुष्प्रभाव: मतली, दस्त, रक्त शर्करा कम होना। हर 3 महीने HbA1c टेस्ट करवाएं। कभी भी स्वयं दवा न लें।"},
+    "prevention": {"en": ["Maintain healthy weight (BMI < 25)", "Exercise 30 mins daily - walk, yoga, swimming", "Eat a balanced low-sugar diet", "Regular blood sugar checkups", "Reduce stress through meditation"], "hi": ["स्वस्थ वज़न बनाए रखें (BMI < 25)", "रोज़ 30 मिनट व्यायाम - चलना, योग, तैराकी", "संतुलित कम-चीनी आहार लें", "नियमित रक्त शर्करा जांच", "ध्यान से तनाव कम करें"]},
+    "doctor_visit": {"en": "⚠️ Seek immediate care: Blood sugar above 300 mg/dL, confusion/unconsciousness, chest pain, vision loss, non-healing wounds, severe nausea/vomiting.", "hi": "⚠️ तुरंत डॉक्टर से मिलें: रक्त शर्करा 300 mg/dL से अधिक, भ्रम, सीने में दर्द, दृष्टि हानि, घाव न भरना।"}
+  },
+  "hypertension": {
+    "id": "DB002", "icd_code": "I10", "category": "Cardiovascular",
+    "name": {"en": "High Blood Pressure (Hypertension)", "hi": "उच्च रक्तचाप"},
+    "emoji": "❤️",
+    "overview": {"en": "A condition where blood pressure in the arteries is persistently elevated (≥140/90 mmHg), increasing risk of heart disease, stroke and kidney damage.", "hi": "एक स्थिति जिसमें धमनियों में रक्तचाप लगातार बढ़ा रहता है, जिससे हृदय रोग और स्ट्रोक का खतरा बढ़ता है।"},
+    "symptoms": {"en": ["Headache (especially morning)", "Dizziness", "Blurred or double vision", "Shortness of breath", "Nosebleeds (severe cases)", "Chest tightness"], "hi": ["सिरदर्द (विशेषकर सुबह)", "चक्कर आना", "धुंधली दृष्टि", "सांस फूलना", "नाक से खून", "सीने में जकड़न"]},
+    "eat": {"en": ["Banana - high potassium, naturally lowers BP", "Garlic (lahsun) - allicin compound reduces BP", "Cucumber - diuretic, helps flush excess sodium", "Coconut water - natural electrolyte balance", "Pomegranate juice - reduces arterial stiffness", "Spinach and leafy greens - magnesium rich"], "hi": ["केला - पोटेशियम युक्त, BP कम करता है", "लहसुन - एलिसिन यौगिक BP कम करता है", "खीरा - मूत्रवर्धक, सोडियम बाहर करता है", "नारियल पानी - प्राकृतिक इलेक्ट्रोलाइट", "अनार का रस - धमनी कठोरता कम करता है", "पालक - मैग्नीशियम युक्त"]},
+    "avoid": {"en": ["Excess salt/sodium (limit to <5g/day)", "Pickles, papad, and namkeen", "Processed and packaged foods", "Red meat and organ meats", "Alcohol and smoking", "Caffeine in excess (tea/coffee)"], "hi": ["अधिक नमक (<5g/दिन)", "अचार, पापड़ और नमकीन", "प्रोसेस्ड और पैकेज्ड खाद्य पदार्थ", "लाल मांस", "शराब और धूम्रपान", "अधिक चाय/कॉफी"]},
+    "home_remedies": {"en": ["Garlic clove with warm water every morning", "Hibiscus (gudhal) flower tea - clinically proven to lower BP", "Methi seed soaked water (drink in morning)", "Amla juice 30ml daily on empty stomach"], "hi": ["हर सुबह गर्म पानी के साथ लहसुन की कली", "गुड़हल की चाय - BP कम करने में सिद्ध", "भिगोई मेथी का पानी सुबह पियें", "खाली पेट 30ml आंवला रस रोज़"]},
+    "ayurvedic_tips": {"en": ["Ashwagandha reduces stress-related hypertension", "Arjuna bark tea (Terminalia arjuna) - heart tonic", "Brahmi - reduces anxiety, supports heart health"], "hi": ["अश्वगंधा तनाव से संबंधित BP कम करता है", "अर्जुन की छाल की चाय - हृदय टॉनिक", "ब्राह्मी - चिंता कम करती है, हृदय को मजबूत करती है"]},
+    "medicine_awareness": {"en": "Common drug classes: ACE inhibitors (e.g., Ramipril - relax blood vessels), Beta-blockers (Atenolol - slow heart rate), Diuretics (Hydrochlorothiazide - remove excess fluid), Calcium channel blockers (Amlodipine). Never stop BP medicines suddenly without doctor's advice.", "hi": "सामान्य दवा वर्ग: ACE इनहिबिटर (रक्त वाहिकाएं शिथिल करते हैं), बीटा-ब्लॉकर (हृदय गति धीमी करते हैं), मूत्रवर्धक। डॉक्टर की सलाह के बिना BP दवा कभी बंद न करें।"},
+    "prevention": {"en": ["Reduce salt intake to <5g/day", "Exercise 30-45 mins daily", "Maintain healthy weight", "Quit smoking completely", "Manage stress through yoga, meditation", "Regular BP monitoring at home"], "hi": ["नमक की मात्रा <5g/दिन", "रोज़ 30-45 मिनट व्यायाम", "स्वस्थ वज़न बनाएं", "धूम्रपान पूरी तरह छोड़ें", "योग, ध्यान से तनाव प्रबंधन", "घर पर नियमित BP जांच"]},
+    "doctor_visit": {"en": "🚨 EMERGENCY: BP above 180/120 mmHg, severe headache, vision loss, chest pain, difficulty speaking or understanding, sudden weakness in arm/face.", "hi": "🚨 आपातकाल: BP 180/120 से अधिक, तेज सिरदर्द, दृष्टि हानि, सीने में दर्द, बोलने में कठिनाई, अचानक बांह/चेहरे में कमज़ोरी।"}
+  },
+  "common_cold": {
+    "id": "DB003", "icd_code": "J00", "category": "Respiratory",
+    "name": {"en": "Common Cold", "hi": "सामान्य सर्दी-जुकाम"},
+    "emoji": "🤧",
+    "overview": {"en": "A viral infection of the upper respiratory tract, typically caused by rhinoviruses. Usually resolves in 7-10 days.", "hi": "ऊपरी श्वसन तंत्र का वायरल संक्रमण जो आमतौर पर 7-10 दिनों में ठीक हो जाता है।"},
+    "symptoms": {"en": ["Runny or stuffy nose", "Sneezing and nasal congestion", "Sore throat", "Mild fever (low grade)", "Cough", "Body ache and fatigue"], "hi": ["नाक बहना या बंद होना", "छींक और नाक बंद", "गले में खराश", "हल्का बुखार", "खांसी", "शरीर दर्द और थकान"]},
+    "eat": {"en": ["Turmeric milk (haldi doodh) - anti-inflammatory, immunity boost", "Ginger-honey tea - soothes sore throat, antibacterial", "Hot dal/chicken soup - warmth and easy nutrition", "Amla - very high vitamin C, boosts immunity", "Garlic in food - antiviral properties", "Hot kadha with tulsi, ginger, black pepper"], "hi": ["हल्दी दूध - सूजन रोधी, रोग प्रतिरोधकता", "अदरक-शहद की चाय - गले को आराम", "गर्म दाल/चिकन सूप - पोषण", "आंवला - उच्च विटामिन C", "लहसुन - एंटीवायरल गुण", "तुलसी-अदरक-काली मिर्च का काढ़ा"]},
+    "avoid": {"en": ["Cold drinks, ice cream, and cold water", "Fried and oily food (weakens immunity)", "Excess dairy (may increase mucus)", "Processed and junk foods", "Alcohol (dehydrates body)"], "hi": ["ठंडे पेय, आइसक्रीम और ठंडा पानी", "तले-भुने और तैलीय खाद्य पदार्थ", "अधिक डेयरी (बलगम बढ़ा सकता है)", "प्रोसेस्ड और जंक फूड", "शराब (शरीर को निर्जलित करती है)"]},
+    "home_remedies": {"en": ["Steam inhalation with eucalyptus oil or ajwain (carom seeds)", "Salt water gargling twice daily (1/4 tsp salt in warm water)", "Tulsi-ginger-honey kadha 2-3 times daily", "Turmeric milk before bedtime"], "hi": ["नीलगिरी तेल या अजवाइन के साथ भाप", "दिन में दो बार नमक पानी से गरारे", "दिन में 2-3 बार तुलसी-अदरक-शहद काढ़ा", "सोने से पहले हल्दी दूध"]},
+    "ayurvedic_tips": {"en": ["Tulsi (holy basil) - 5 fresh leaves daily boosts immunity", "Sitopaladi churna - classical Ayurvedic cold remedy", "Nasya: 2 drops warm sesame oil in each nostril - prevents recurrence"], "hi": ["तुलसी - रोज़ 5 ताज़ी पत्तियां", "सितोपलादि चूर्ण - क्लासिक आयुर्वेदिक उपाय", "नास्य: प्रत्येक नाक में 2 बूंद गर्म तिल का तेल"]},
+    "medicine_awareness": {"en": "Antihistamines (Cetirizine - reduce sneezing, runny nose), Decongestants (open nasal passages), Paracetamol (fever and body ache). IMPORTANT: Antibiotics do NOT work for viral infections. Avoid unnecessary antibiotics.", "hi": "एंटीहिस्टामिन (छींक/नाक बहना कम करते हैं), डिकंजेस्टेंट (नाक खोलते हैं), पेरासिटामोल (बुखार और शरीर दर्द)। महत्वपूर्ण: एंटीबायोटिक वायरल संक्रमण पर काम नहीं करते।"},
+    "prevention": {"en": ["Wash hands frequently with soap for 20 seconds", "Avoid touching face (eyes, nose, mouth)", "Maintain distance from infected persons", "Boost immunity with vitamin C-rich foods", "Stay warm, avoid sudden cold exposure"], "hi": ["बार-बार 20 सेकंड तक साबुन से हाथ धोएं", "चेहरे को छूने से बचें", "संक्रमित व्यक्तियों से दूरी बनाएं", "विटामिन C युक्त खाद्य पदार्थ खाएं", "गर्म रहें, अचानक ठंड से बचें"]},
+    "doctor_visit": {"en": "See doctor if: Fever above 103°F (39.4°C) for more than 3 days, difficulty breathing, severe ear pain, symptoms worsen after day 7 or last beyond 10 days.", "hi": "डॉक्टर से मिलें अगर: 3 दिन से अधिक 103°F से ऊपर बुखार, सांस में कठिनाई, कान में तेज दर्द, 10 दिन बाद भी लक्षण।"}
+  },
+  "acidity": {
+    "id": "DB004", "icd_code": "K21", "category": "Digestive",
+    "name": {"en": "Acidity / GERD / Heartburn", "hi": "एसिडिटी / गैस / सीने की जलन"},
+    "emoji": "🔥",
+    "overview": {"en": "Excess stomach acid or backflow of acid into the esophagus (food pipe), causing burning sensation in the chest or throat.", "hi": "पेट में अधिक एसिड या एसिड का भोजन नली में वापस आना जिससे सीने या गले में जलन होती है।"},
+    "symptoms": {"en": ["Burning sensation in chest (heartburn)", "Sour/bitter belching", "Bloating and gas", "Nausea and vomiting", "Regurgitation of food", "Difficulty swallowing"], "hi": ["सीने में जलन", "खट्टी/कड़वी डकार", "पेट फूलना और गैस", "मतली और उल्टी", "खाना वापस आना", "निगलने में कठिनाई"]},
+    "eat": {"en": ["Banana - natural antacid, very alkaline", "Coconut water - alkaline, soothes stomach lining", "Cold milk (if not lactose intolerant) - neutralizes acid", "Cucumber - cooling, high water content", "Oatmeal/dalia - absorbs excess acid", "Fennel seeds (saunf) - after every meal"], "hi": ["केला - प्राकृतिक एंटासिड, क्षारीय", "नारियल पानी - क्षारीय, पेट की परत शांत करता है", "ठंडा दूध - एसिड को बेअसर करता है", "खीरा - ठंडक देता है", "दलिया - अतिरिक्त एसिड सोखता है", "भोजन के बाद सौंफ"]},
+    "avoid": {"en": ["Spicy and oily foods", "Citrus fruits (lemon, orange) in excess", "Tea and coffee on empty stomach", "Alcohol and carbonated fizzy drinks", "Tomatoes and tomato-based dishes", "Late night meals (lie down within 2 hours of eating)"], "hi": ["मसालेदार और तैलीय खाना", "अधिक खट्टे फल", "खाली पेट चाय और कॉफी", "शराब और कार्बोनेटेड पेय", "टमाटर और टमाटर आधारित व्यंजन", "रात को देर से खाना"]},
+    "home_remedies": {"en": ["Jeera (cumin) water boiled and cooled - after meals", "Saunf + mishri (fennel + candy sugar) after eating", "Aloe vera juice 2 tbsp before meals", "Cold milk with cardamom powder"], "hi": ["उबला और ठंडा जीरे का पानी भोजन के बाद", "खाने के बाद सौंफ और मिश्री", "भोजन से पहले 2 चम्मच एलोवेरा जूस", "इलायची पाउडर के साथ ठंडा दूध"]},
+    "ayurvedic_tips": {"en": ["Avipattikar churna - classical remedy for hyperacidity", "Licorice (mulethi) tea - soothes esophageal lining", "Eat slowly, chew thoroughly - key Ayurvedic principle"], "hi": ["अविपत्तिकर चूर्ण - अम्लता का क्लासिक उपाय", "मुलेठी की चाय - भोजन नली की परत शांत करती है", "धीरे खाएं, अच्छे से चबाएं"]},
+    "medicine_awareness": {"en": "Antacids (Gelusil, Digene - neutralize acid for quick relief), H2 blockers (Ranitidine - reduce acid production), PPIs (Omeprazole, Pantoprazole - long-term acid control). Overuse of antacids can cause dependency and rebound acidity.", "hi": "एंटासिड (जेलुसिल - तुरंत राहत), H2 ब्लॉकर (रैनिटिडिन), PPI (ओमेप्राजोल - दीर्घकालिक एसिड नियंत्रण)। एंटासिड के अत्यधिक उपयोग से रिबाउंड एसिडिटी हो सकती है।"},
+    "prevention": {"en": ["Eat small, frequent meals (5-6 small meals vs 3 large)", "Don't lie down within 2-3 hours of eating", "Elevate head of bed by 6-8 inches", "Avoid trigger foods specific to you", "Maintain healthy weight"], "hi": ["थोड़ा-थोड़ा बार-बार खाएं (5-6 बार)", "खाने के 2-3 घंटे बाद तक न लेटें", "बिस्तर का सिर 6-8 इंच ऊंचा रखें", "अपने ट्रिगर खाद्य पदार्थ से बचें", "स्वस्थ वज़न बनाएं"]},
+    "doctor_visit": {"en": "See doctor if: Daily symptoms for several weeks, difficulty swallowing, unintended weight loss, blood in vomit or black/tarry stools, severe chest pain.", "hi": "डॉक्टर से मिलें अगर: हफ्तों तक रोज़ लक्षण, निगलने में कठिनाई, अस्पष्टीकृत वज़न कम, उल्टी/मल में खून, तेज सीने में दर्द।"}
+  },
+  "anemia": {
+    "id": "DB005", "icd_code": "D50", "category": "Blood Disorders",
+    "name": {"en": "Iron Deficiency Anemia", "hi": "लौह तत्व की कमी (एनीमिया)"},
+    "emoji": "🩸",
+    "overview": {"en": "A common condition where blood lacks enough healthy red blood cells due to iron deficiency, common in women and children in India.", "hi": "एक सामान्य स्थिति जिसमें आयरन की कमी के कारण रक्त में पर्याप्त लाल रक्त कोशिकाएं नहीं होतीं, भारत में महिलाओं और बच्चों में आम।"},
+    "symptoms": {"en": ["Fatigue and weakness", "Pale skin and inner eyelids", "Shortness of breath on exertion", "Dizziness and lightheadedness", "Cold hands and feet", "Brittle nails and hair loss"], "hi": ["थकान और कमज़ोरी", "पीली त्वचा और आंखें", "परिश्रम पर सांस फूलना", "चक्कर आना", "ठंडे हाथ-पैर", "कमज़ोर नाखून और बाल झड़ना"]},
+    "eat": {"en": ["Spinach (palak) - rich in iron and folate", "Pomegranate (anar) - iron + vitamin C combo", "Beetroot (chukandar) - iron, folate, boosts hemoglobin", "Jaggery (gur) - natural plant-based iron", "Dates (khajoor) - iron and energy", "Sesame seeds (til) with jaggery - traditional iron tonic"], "hi": ["पालक - आयरन और फोलेट युक्त", "अनार - आयरन + विटामिन C", "चुकंदर - आयरन, फोलेट, हीमोग्लोबिन बढ़ाता है", "गुड़ - प्राकृतिक पौधे-आधारित आयरन", "खजूर - आयरन और ऊर्जा", "तिल और गुड़ - पारंपरिक आयरन टॉनिक"]},
+    "avoid": {"en": ["Tea/coffee with meals - inhibits iron absorption significantly", "Calcium-rich foods simultaneously with iron-rich meals", "Excess wheat bran (phytates block absorption)", "Antacids (reduce iron absorption)"], "hi": ["भोजन के साथ चाय/कॉफी - आयरन अवशोषण रोकता है", "आयरन युक्त भोजन के साथ कैल्शियम युक्त खाद्य पदार्थ", "अत्यधिक गेहूं का चोकर", "एंटासिड"]},
+    "home_remedies": {"en": ["Pomegranate juice with a pinch of rock salt and mishri daily", "Beetroot + carrot juice every morning", "Soak 10 raisins overnight, eat with soaking water", "Gur-chana (jaggery with roasted chickpeas) as daily snack"], "hi": ["रोज़ अनार का रस सेंधा नमक और मिश्री के साथ", "हर सुबह चुकंदर और गाजर का रस", "10 किशमिश रात भर भिगोकर सुबह खाएं", "रोज़ गुड़-चना स्नैक के रूप में"]},
+    "ayurvedic_tips": {"en": ["Punarnava (Boerhavia diffusa) - traditional blood builder", "Cook food in iron vessels - increases iron content naturally", "Dhatri Loha or Navayasa Churna - consult Ayurvedic vaidya"], "hi": ["पुनर्नवा - रक्त निर्माण में सहायक", "लोहे के बर्तन में पकाने से खाने में आयरन बढ़ता है", "धात्री लोह या नवायस चूर्ण - वैद्य से परामर्श"]},
+    "medicine_awareness": {"en": "Ferrous Sulfate or Ferrous Gluconate tablets are standard iron supplements. Take with Vitamin C (lemon water) for better absorption. Common side effects: dark stools, constipation, nausea. Treatment duration typically 3-6 months. Don't self-prescribe.", "hi": "फेरस सल्फेट या फेरस ग्लूकोनेट सामान्य आयरन सप्लीमेंट। विटामिन C के साथ बेहतर अवशोषण। दुष्प्रभाव: काले मल, कब्ज, मतली। उपचार 3-6 महीने।"},
+    "prevention": {"en": ["Eat iron-rich foods daily (dal, leafy greens, gur)", "Pair iron foods with vitamin C always", "Regular hemoglobin checkups (especially women)", "Deworm children regularly", "Fortified foods awareness"], "hi": ["रोज़ आयरन युक्त खाद्य पदार्थ खाएं", "आयरन खाद्य पदार्थ को हमेशा विटामिन C के साथ लें", "नियमित हीमोग्लोबिन जांच (विशेषकर महिलाएं)", "बच्चों में नियमित कृमि उपचार"]},
+    "doctor_visit": {"en": "See doctor if: Extreme fatigue causing inability to work, fainting, irregular heartbeat, hemoglobin below 8 g/dL, persistent symptoms despite diet changes.", "hi": "डॉक्टर से मिलें अगर: काम न कर पाने की थकान, बेहोशी, अनियमित दिल की धड़कन, हीमोग्लोबिन 8 g/dL से कम।"}
+  },
+  "thyroid": {
+    "id": "DB006", "icd_code": "E03", "category": "Endocrine",
+    "name": {"en": "Hypothyroidism (Underactive Thyroid)", "hi": "हाइपोथायरायडिज्म (थायरॉइड की कमी)"},
+    "emoji": "🦋",
+    "overview": {"en": "A condition where the thyroid gland doesn't produce enough thyroid hormone, causing metabolism to slow down significantly.", "hi": "एक स्थिति जिसमें थायरॉइड ग्रंथि पर्याप्त हार्मोन नहीं बनाती, जिससे चयापचय धीमा हो जाता है।"},
+    "symptoms": {"en": ["Unexplained weight gain", "Fatigue and sluggishness", "Cold intolerance", "Constipation", "Dry skin and brittle hair/nails", "Depression and memory problems", "Slow heart rate"], "hi": ["अस्पष्टीकृत वज़न वृद्धि", "थकान और सुस्ती", "ठंड न सह पाना", "कब्ज", "रूखी त्वचा और कमज़ोर बाल/नाखून", "अवसाद और याददाश्त की समस्या", "धीमी हृदय गति"]},
+    "eat": {"en": ["Iodized salt - essential for thyroid hormone production", "Selenium-rich: Brazil nuts (2/day), sunflower seeds", "Zinc-rich: pumpkin seeds, chickpeas, lentils", "Vitamin D: sunlight 20 mins, fortified milk, eggs", "Coconut oil - medium chain fatty acids support thyroid", "Fish (if non-vegetarian) - iodine and omega-3"], "hi": ["आयोडाइज्ड नमक - थायरॉइड हार्मोन उत्पादन के लिए आवश्यक", "सेलेनियम: ब्राजील नट (2/दिन), सूरजमुखी के बीज", "जिंक: कद्दू के बीज, चना, दाल", "विटामिन D: 20 मिनट धूप, फोर्टिफाइड दूध, अंडे", "नारियल तेल - थायरॉइड कार्य में सहायक", "मछली - आयोडीन और ओमेगा-3"]},
+    "avoid": {"en": ["Raw cruciferous vegetables in excess (cabbage, broccoli, cauliflower - goitrogens affect iodine)", "Cook these vegetables to reduce goitrogen content", "Soy products in excess", "Gluten (if Hashimoto's thyroiditis diagnosed)", "Processed and packaged foods"], "hi": ["कच्ची क्रूसिफेरस सब्जियां अधिक मात्रा में (गोभी, ब्रोकली - आयोडीन प्रभावित)", "इन्हें पकाने से गोइट्रोजेन कम होता है", "सोया उत्पाद अधिक मात्रा में", "ग्लूटेन (हाशिमोटो होने पर)", "प्रोसेस्ड खाद्य पदार्थ"]},
+    "home_remedies": {"en": ["Ashwagandha milk: 1 tsp ashwagandha powder in warm milk daily", "Coconut oil in cooking (1-2 tbsp daily)", "Adequate sleep (7-8 hours) - critical for hormone balance", "Regular gentle exercise - walking, yoga"], "hi": ["अश्वगंधा दूध: 1 चम्मच अश्वगंधा पाउडर गर्म दूध में रोज़", "खाना पकाने में नारियल तेल (1-2 चम्मच)", "पर्याप्त नींद (7-8 घंटे)", "नियमित हल्का व्यायाम - चलना, योग"]},
+    "ayurvedic_tips": {"en": ["Kanchanar Guggulu - specific classical remedy for thyroid", "Guggulu helps clear ama (toxins) from thyroid region", "Avoid Kapha-increasing foods (excess dairy, sweets, cold foods)"], "hi": ["कंचनार गुग्गुलु - थायरॉइड के लिए विशेष क्लासिक उपाय", "गुग्गुलु थायरॉइड क्षेत्र से आम (विषाक्त पदार्थ) साफ करता है", "कफ बढ़ाने वाले खाद्य पदार्थ से बचें"]},
+    "medicine_awareness": {"en": "Levothyroxine (LT4) - synthetic thyroid hormone - is the standard treatment. Must be taken on empty stomach, 30-60 minutes before breakfast. Regular TSH blood tests every 3-6 months. NEVER stop without doctor's advice - can cause serious complications.", "hi": "लेवोथायरोक्सिन - सिंथेटिक थायरॉइड हार्मोन - मानक उपचार। खाली पेट, नाश्ते से 30-60 मिनट पहले लें। हर 3-6 महीने TSH परीक्षण। डॉक्टर की सलाह के बिना कभी बंद न करें।"},
+    "prevention": {"en": ["Ensure adequate iodine intake through iodized salt", "Regular thyroid function tests (TSH) after 30 years", "Avoid unnecessary neck radiation", "Manage stress (key thyroid trigger)", "Know your family history"], "hi": ["आयोडाइज्ड नमक से पर्याप्त आयोडीन सुनिश्चित करें", "30 साल के बाद नियमित TSH परीक्षण", "गर्दन पर अनावश्यक विकिरण से बचें", "तनाव प्रबंधन करें", "पारिवारिक इतिहास जानें"]},
+    "doctor_visit": {"en": "See doctor if: Unexplained rapid weight gain, severe fatigue, swelling in neck/throat (goiter), very slow heart rate, severe depression, or TSH above 10.", "hi": "डॉक्टर से मिलें अगर: अस्पष्टीकृत वज़न वृद्धि, गंभीर थकान, गर्दन में सूजन (घेंघा), बहुत धीमी हृदय गति, गंभीर अवसाद, TSH 10 से अधिक।"}
+  },
+  "arthritis": {
+    "id": "DB007", "icd_code": "M06", "category": "Musculoskeletal",
+    "name": {"en": "Arthritis (Joint Pain)", "hi": "गठिया (जोड़ों का दर्द)"},
+    "emoji": "🦴",
+    "overview": {"en": "Inflammation of joints causing pain, stiffness, and reduced mobility. Two main types: Osteoarthritis (wear and tear) and Rheumatoid Arthritis (autoimmune).", "hi": "जोड़ों में सूजन जिससे दर्द, अकड़न और गतिशीलता कम होती है। दो मुख्य प्रकार: ऑस्टियोआर्थराइटिस और रूमेटाइड आर्थराइटिस।"},
+    "symptoms": {"en": ["Joint pain, swelling, warmth", "Morning stiffness (lasting >1 hour in RA)", "Reduced range of motion", "Redness around joints", "Fatigue (especially in RA)", "Joint deformity in advanced cases"], "hi": ["जोड़ दर्द, सूजन, गर्माहट", "सुबह की अकड़न (RA में >1 घंटा)", "गतिशीलता में कमी", "जोड़ों के आसपास लालिमा", "थकान (RA में विशेष)", "जोड़ विकृति गंभीर मामलों में"]},
+    "eat": {"en": ["Turmeric with black pepper - curcumin reduces inflammation", "Ginger tea daily - potent anti-inflammatory", "Flaxseeds and walnuts (akhrot) - omega-3 fatty acids", "Green leafy vegetables - antioxidants", "Garlic - sulfur compounds reduce joint inflammation", "Whole grains and fiber-rich foods"], "hi": ["काली मिर्च के साथ हल्दी - करक्यूमिन सूजन कम करता है", "रोज़ अदरक की चाय", "अलसी और अखरोट - ओमेगा-3", "हरी पत्तेदार सब्जियां - एंटीऑक्सीडेंट", "लहसुन - जोड़ सूजन कम करता है", "साबुत अनाज और फाइबर"]},
+    "avoid": {"en": ["Fried and deep-fried foods (pro-inflammatory)", "Red meat and processed meat", "Refined sugars and white flour", "Alcohol (increases inflammation)", "Excess salt (causes fluid retention)", "Nightshades (tomato, eggplant, peppers) - debated but some patients report relief avoiding them"], "hi": ["तले हुए खाद्य पदार्थ (सूजन बढ़ाते हैं)", "लाल और प्रोसेस्ड मांस", "परिष्कृत चीनी और मैदा", "शराब (सूजन बढ़ाती है)", "अधिक नमक", "नाइटशेड (टमाटर, बैंगन)"]},
+    "home_remedies": {"en": ["Turmeric + ginger paste warm compress on affected joints", "Warm mustard oil massage with garlic - twice daily", "Epsom salt (sendha namak) warm water soak for hands/feet", "Castor oil (arandi) massage with warm cloth compress"], "hi": ["हल्दी-अदरक पेस्ट का प्रभावित जोड़ों पर गर्म सेक", "लहसुन के साथ गर्म सरसों के तेल की मालिश दिन में दो बार", "सेंधा नमक गर्म पानी में हाथ-पैर भिगोना", "गर्म कपड़े के सेक के साथ अरंडी के तेल की मालिश"]},
+    "ayurvedic_tips": {"en": ["Shallaki (Boswellia serrata) - clinically proven anti-inflammatory for joints", "Maharasnadi Kwath - classical for joint disorders", "Guggulu formulations - anti-inflammatory", "Daily Abhyanga (warm sesame oil massage) before bath"], "hi": ["शल्लकी (बोसवेलिया) - जोड़ों के लिए सिद्ध सूजन रोधी", "महारास्नादि क्वाथ - जोड़ विकारों के लिए क्लासिक", "गुग्गुलु फॉर्मूलेशन - सूजन रोधी", "नहाने से पहले रोज़ अभ्यंग (गर्म तिल तेल मालिश)"]},
+    "medicine_awareness": {"en": "NSAIDs (Ibuprofen, Naproxen - reduce pain/inflammation), DMARDs for RA (Methotrexate - slow disease progression), Corticosteroids (short-term flare control). Long-term NSAID use can cause stomach ulcers and kidney issues. Always use with doctor supervision.", "hi": "NSAIDs (दर्द/सूजन कम करते हैं), DMARDs (RA में रोग प्रगति धीमी करते हैं), कॉर्टिकोस्टेरॉइड। दीर्घकालिक NSAIDs से पेट के अल्सर और गुर्दे की समस्या हो सकती है।"},
+    "prevention": {"en": ["Maintain healthy weight (reduces joint stress)", "Low-impact exercise: swimming, cycling, yoga", "Protect joints from repeated injuries", "Anti-inflammatory diet consistently", "Regular checkups if family history exists"], "hi": ["स्वस्थ वज़न बनाएं (जोड़ों पर कम दबाव)", "कम प्रभाव वाला व्यायाम: तैराकी, साइकिलिंग, योग", "जोड़ों को बार-बार की चोट से बचाएं", "नियमित रूप से सूजन रोधी आहार", "पारिवारिक इतिहास हो तो नियमित जांच"]},
+    "doctor_visit": {"en": "See doctor if: Sudden severe joint pain, fever with joint swelling, joint deformity developing, inability to walk or use hands, pain at rest or night.", "hi": "डॉक्टर से मिलें अगर: अचानक तेज जोड़ दर्द, जोड़ सूजन के साथ बुखार, जोड़ विकृति विकसित हो, चलने या हाथ उपयोग में असमर्थता।"}
+  },
+  "obesity": {
+    "id": "DB008", "icd_code": "E66", "category": "Metabolic",
+    "name": {"en": "Obesity / Overweight", "hi": "मोटापा / अधिक वज़न"},
+    "emoji": "⚖️",
+    "overview": {"en": "Excess accumulation of body fat that increases health risks. Obesity is defined as BMI ≥30. It raises risk for diabetes, heart disease, and joint problems.", "hi": "शरीर में अत्यधिक वसा संचय जो स्वास्थ्य जोखिम बढ़ाता है। BMI ≥30 को मोटापा कहते हैं।"},
+    "symptoms": {"en": ["Excess body weight", "Shortness of breath on minimal exertion", "Joint pain (especially knees, hips)", "Fatigue and low energy", "Sleep apnea (snoring, interrupted sleep)", "Increased sweating", "Low self-esteem"], "hi": ["अधिक शरीर भार", "थोड़े परिश्रम पर सांस फूलना", "जोड़ दर्द (घुटने, कूल्हे)", "थकान और कम ऊर्जा", "नींद में सांस रुकना", "अधिक पसीना", "कम आत्मसम्मान"]},
+    "eat": {"en": ["Moong dal (green gram) - high protein, very low calorie", "Methi leaves - boosts metabolism, reduces appetite", "Jeera (cumin) water on empty stomach daily - fat burning", "Green vegetables (bottle gourd, ridge gourd, spinach) - filling", "Buttermilk (chaas) - probiotic, low calorie, filling", "Chia seeds in water - fiber, appetite control"], "hi": ["मूंग दाल - उच्च प्रोटीन, बहुत कम कैलोरी", "मेथी के पत्ते - चयापचय बढ़ाते हैं, भूख कम करते हैं", "खाली पेट जीरे का पानी", "हरी सब्जियां (लौकी, तोरी, पालक)", "छाछ - प्रोबायोटिक, कम कैलोरी", "चिया बीज पानी में - फाइबर, भूख नियंत्रण"]},
+    "avoid": {"en": ["Maida products (bread, naan, biscuits, namkeen)", "Sugary beverages (cold drinks, packaged juices)", "Deep fried snacks (samosa, pakora, chips)", "Packaged and ultra-processed foods", "White rice and potato in large quantities", "Late-night eating (after 8 PM)"], "hi": ["मैदा उत्पाद (ब्रेड, नान, बिस्किट, नमकीन)", "मीठे पेय (कोल्ड ड्रिंक, पैकेज्ड जूस)", "गहरे तले स्नैक्स (समोसा, पकोड़ा, चिप्स)", "पैकेज्ड और अल्ट्रा-प्रोसेस्ड खाद्य पदार्थ", "बड़ी मात्रा में सफेद चावल और आलू", "रात 8 बजे के बाद खाना"]},
+    "home_remedies": {"en": ["Jeera water: Boil 1 tsp cumin in 2 glasses water, drink warm morning", "Lemon-honey warm water: 1 glass on empty stomach daily", "Green tea with ginger: 2-3 cups daily (no sugar)", "Triphala powder in warm water at night"], "hi": ["जीरे का पानी: 2 गिलास पानी में 1 चम्मच जीरा उबालें, सुबह गर्म पियें", "नींबू-शहद गर्म पानी: रोज़ खाली पेट 1 गिलास", "अदरक के साथ ग्रीन टी: दिन में 2-3 कप (बिना चीनी)", "रात में गर्म पानी में त्रिफला पाउडर"]},
+    "ayurvedic_tips": {"en": ["Triphala - excellent metabolism booster and gentle detox", "Medohar Vati - Ayurvedic weight management formula", "Guggulu - improves fat metabolism", "Udvartana (dry herbal powder massage) - traditional body toning"], "hi": ["त्रिफला - उत्कृष्ट चयापचय बूस्टर और हल्का डिटॉक्स", "मेदोहर वटी - आयुर्वेदिक वज़न प्रबंधन", "गुग्गुलु - वसा चयापचय सुधारता है", "उद्वर्तन (सूखे जड़ी-बूटी पाउडर मालिश)"]},
+    "medicine_awareness": {"en": "Weight loss medications (Orlistat, etc.) are prescribed only when BMI >30 with health complications and diet/exercise have failed. They carry significant side effects. Bariatric surgery for BMI >40. All must be doctor-supervised.", "hi": "वज़न घटाने की दवाएं केवल तब दी जाती हैं जब BMI >30 हो, जटिलताएं हों और आहार/व्यायाम विफल हो। BMI >40 के लिए बेरिएट्रिक सर्जरी। सब डॉक्टर की निगरानी में।"},
+    "prevention": {"en": ["Daily physical activity 45-60 minutes minimum", "Mindful eating - eat slowly, chew thoroughly", "Portion control - use smaller plates", "Sleep 7-8 hours (poor sleep raises hunger hormones)", "Limit screen time and sedentary behavior", "Regular weight monitoring"], "hi": ["रोज़ कम से कम 45-60 मिनट शारीरिक गतिविधि", "सचेत खाना - धीरे खाएं, अच्छे से चबाएं", "खाने की मात्रा पर नियंत्रण - छोटी प्लेट उपयोग करें", "7-8 घंटे नींद", "स्क्रीन समय और बैठे रहने को सीमित करें", "नियमित वज़न निगरानी"]},
+    "doctor_visit": {"en": "See doctor if: BMI above 35 with health complications, severe breathing difficulty, obesity-related depression, joint pain preventing movement, or if self-efforts have consistently failed.", "hi": "डॉक्टर से मिलें अगर: BMI 35 से अधिक जटिलताओं के साथ, सांस लेने में गंभीर कठिनाई, मोटापे से अवसाद, जोड़ दर्द से चलना मुश्किल।"}
+  },
+  "dengue": {
+    "id": "DB009", "icd_code": "A90", "category": "Infectious",
+    "name": {"en": "Dengue Fever", "hi": "डेंगू बुखार"},
+    "emoji": "🦟",
+    "overview": {"en": "A mosquito-borne viral disease spread by Aedes mosquitoes, causing high fever, severe pain, and potentially dangerous drop in platelet count.", "hi": "एडीज मच्छरों से फैलने वाली वायरल बीमारी जिसमें तेज बुखार, गंभीर दर्द और प्लेटलेट काउंट खतरनाक रूप से कम हो सकता है।"},
+    "symptoms": {"en": ["Sudden high fever (104°F/40°C)", "Severe headache", "Pain behind the eyes", "Severe muscle and joint pain ('breakbone fever')", "Skin rash (appears 2-5 days after fever)", "Low platelet count (thrombocytopenia)"], "hi": ["अचानक तेज बुखार (104°F/40°C)", "गंभीर सिरदर्द", "आंखों के पीछे दर्द", "गंभीर मांसपेशी और जोड़ दर्द", "त्वचा पर चकत्ते (बुखार के 2-5 दिन बाद)", "प्लेटलेट काउंट कम होना"]},
+    "eat": {"en": ["Papaya leaf juice - clinically shown to increase platelets", "Coconut water - hydration and electrolyte replacement", "Pomegranate juice - boosts red blood cell production", "Kiwi and oranges - vitamin C for immunity", "Light khichdi with ghee - easy to digest", "Warm soups and broths - maintain hydration"], "hi": ["पपीते के पत्ते का रस - प्लेटलेट बढ़ाने में सिद्ध", "नारियल पानी - हाइड्रेशन और इलेक्ट्रोलाइट", "अनार का रस - रक्त कोशिका उत्पादन बढ़ाता है", "कीवी और संतरे - विटामिन C", "घी के साथ हल्की खिचड़ी", "गर्म सूप और शोरबा"]},
+    "avoid": {"en": ["Oily and spicy foods (hard to digest when sick)", "Heavy solid meals", "Alcohol (worsens dehydration)", "Aspirin and Ibuprofen - DANGEROUS in dengue (increase bleeding)", "Cold drinks and ice cream"], "hi": ["तैलीय और मसालेदार खाद्य पदार्थ", "भारी खाना", "शराब (निर्जलीकरण बिगाड़ती है)", "एस्पिरिन और इबुप्रोफेन - डेंगू में खतरनाक", "ठंडे पेय और आइसक्रीम"]},
+    "home_remedies": {"en": ["Papaya leaf juice: Crush 2-3 fresh leaves, extract juice, take 2 tbsp twice daily (supportive, not cure)", "Giloy (guduchi) juice: 30ml twice daily - immunity booster", "Neem leaf tea: mild antiviral properties (bitter but effective)"], "hi": ["पपीते के पत्ते का रस: 2-3 ताज़ी पत्तियां कुचलें, रस निकालें, दिन में दो बार 2 चम्मच (सहायक)", "गिलोय रस: दिन में दो बार 30ml", "नीम के पत्ते की चाय: हल्के एंटीवायरल गुण"]},
+    "ayurvedic_tips": {"en": ["Giloy (Tinospora cordifolia) is considered Amrita (immortal) in Ayurveda for fever", "Sudarshan Kwath - classical fever management formula", "Complete bed rest is paramount - do not force activity"], "hi": ["गिलोय को आयुर्वेद में बुखार के लिए अमृत माना जाता है", "सुदर्शन क्वाथ - बुखार प्रबंधन का क्लासिक फॉर्मूला", "पूर्ण बिस्तर आराम अत्यंत आवश्यक"]},
+    "medicine_awareness": {"en": "✅ SAFE: Paracetamol (acetaminophen) for fever management. ❌ DANGEROUS: NEVER use Aspirin or Ibuprofen/NSAIDs in dengue - they severely increase bleeding risk. Platelet transfusion only in severe cases (platelets <20,000). Hospitalization required for severe dengue.", "hi": "✅ सुरक्षित: बुखार के लिए पेरासिटामोल। ❌ खतरनाक: डेंगू में एस्पिरिन या इबुप्रोफेन कभी न लें - रक्तस्राव का खतरा बढ़ाते हैं। गंभीर मामलों में प्लेटलेट ट्रांसफ्यूजन।"},
+    "prevention": {"en": ["Eliminate standing water: coolers, pots, containers, tyres", "Use mosquito nets, repellents (DEET-based)", "Wear full-sleeve clothing (especially at dawn/dusk)", "Install window/door screens", "Community fogging during outbreaks"], "hi": ["रुके पानी को हटाएं: कूलर, बर्तन, टायर", "मच्छरदानी और रिपेलेंट का उपयोग", "पूरी आस्तीन के कपड़े (विशेषकर सुबह/शाम)", "खिड़की/दरवाजे पर जाली लगाएं", "प्रकोप के दौरान सामुदायिक धुआं"]},
+    "doctor_visit": {"en": "🚨 IMMEDIATE EMERGENCY: Platelet count below 50,000, bleeding from gums/nose, blood in urine or dark stools, severe abdominal pain, persistent vomiting, extreme fatigue, pale/cold skin.", "hi": "🚨 तुरंत आपातकाल: प्लेटलेट 50,000 से कम, मसूड़े/नाक से खून, मूत्र/मल में खून, गंभीर पेट दर्द, लगातार उल्टी, अत्यधिक थकान।"}
+  },
+  "constipation": {
+    "id": "DB010", "icd_code": "K59.0", "category": "Digestive",
+    "name": {"en": "Constipation", "hi": "कब्ज"},
+    "emoji": "🌿",
+    "overview": {"en": "Infrequent bowel movements (less than 3 times per week), difficulty passing hard stools, or feeling of incomplete evacuation.", "hi": "सप्ताह में 3 बार से कम मल त्याग, कठोर मल निकालने में कठिनाई, या अधूरे मल त्याग की भावना।"},
+    "symptoms": {"en": ["Fewer than 3 bowel movements per week", "Hard, lumpy, or dry stools", "Straining during defecation", "Feeling of incomplete emptying", "Abdominal bloating and discomfort", "Occasional nausea"], "hi": ["सप्ताह में 3 से कम मल त्याग", "कठोर, गांठदार या सूखा मल", "मल त्याग में जोर लगाना", "अधूरे मल त्याग की भावना", "पेट फूलना और असुविधा", "कभी-कभी मतली"]},
+    "eat": {"en": ["Papaya - contains papain enzyme, natural laxative", "Prunes/Alu Bukhara - sorbitol acts as natural laxative", "Isabgol (psyllium husk) - best natural fiber supplement", "Ghee with warm milk at night - lubricates intestines", "Figs (anjeer) soaked overnight - excellent natural laxative", "High fiber dal and vegetables"], "hi": ["पपीता - पपाइन एंजाइम, प्राकृतिक विरेचक", "आलू बुखारा - सोर्बिटोल प्राकृतिक विरेचक", "इसबगोल - सर्वोत्तम प्राकृतिक फाइबर सप्लीमेंट", "रात में गर्म दूध के साथ घी - आंतें चिकनी करता है", "भिगोया हुआ अंजीर - उत्कृष्ट प्राकृतिक विरेचक", "उच्च फाइबर दाल और सब्जियां"]},
+    "avoid": {"en": ["Maida and refined grain products", "Excess dairy (cheese, paneer in large amounts)", "Unripe bananas", "Alcohol (dehydrates)", "Low-fiber processed foods", "Not drinking enough water"], "hi": ["मैदा और परिष्कृत अनाज उत्पाद", "अधिक डेयरी (पनीर बड़ी मात्रा में)", "कच्चा केला", "शराब (निर्जलीकरण)", "कम फाइबर वाले प्रोसेस्ड खाद्य पदार्थ", "पर्याप्त पानी न पीना"]},
+    "home_remedies": {"en": ["Isabgol 1 tbsp in warm water/milk - take before bed (most effective)", "Triphala churna in warm water at night - classic remedy", "Warm lemon water with honey every morning on empty stomach", "2 tsp ghee in hot milk at bedtime"], "hi": ["रात को सोने से पहले गर्म पानी/दूध में 1 चम्मच इसबगोल (सबसे प्रभावी)", "रात में गर्म पानी के साथ त्रिफला चूर्ण", "हर सुबह खाली पेट नींबू पानी और शहद", "सोने के समय गर्म दूध में 2 चम्मच घी"]},
+    "ayurvedic_tips": {"en": ["Triphala is the gold standard Ayurvedic remedy for constipation", "Haritaki (one component of Triphala) - excellent gentle laxative", "Regular toilet time daily at same hour - trains body clock", "Abdominal self-massage clockwise - stimulates bowel movement"], "hi": ["त्रिफला कब्ज के लिए मानक आयुर्वेदिक उपाय है", "हरीतकी - उत्कृष्ट हल्का विरेचक", "हर दिन एक ही समय पर शौचालय जाने की आदत बनाएं", "दक्षिणावर्त पेट की स्व-मालिश - आंत्र गतिविधि उत्तेजित करती है"]},
+    "medicine_awareness": {"en": "Bulk-forming laxatives (Isabgol/Psyllium - safest, first choice), Osmotic laxatives (Lactulose syrup - safe for long term), Stimulant laxatives (Senna/Bisacodyl - short term only, can cause dependency). Address root cause rather than relying on laxatives.", "hi": "बल्क लैक्सेटिव (इसबगोल - सबसे सुरक्षित), ऑस्मोटिक लैक्सेटिव (लैक्टुलोज - दीर्घकालिक सुरक्षित), स्टिमुलेंट लैक्सेटिव (सेना - केवल अल्पकालिक)। लैक्सेटिव पर निर्भर होने के बजाय मूल कारण का समाधान करें।"},
+    "prevention": {"en": ["Drink 8-10 glasses of water daily (most important!)", "Eat high-fiber diet (30g fiber/day)", "Exercise daily - even 20-30 min walk helps", "Don't ignore the urge to defecate", "Establish a regular morning toilet routine", "Reduce stress - gut-brain connection is real"], "hi": ["रोज़ 8-10 गिलास पानी पियें (सबसे महत्वपूर्ण!)", "उच्च फाइबर आहार (30g फाइबर/दिन)", "रोज़ व्यायाम - 20-30 मिनट चलना भी मदद करता है", "मल त्याग की इच्छा को नजरअंदाज न करें", "सुबह नियमित शौचालय दिनचर्या बनाएं", "तनाव कम करें - आंत-मस्तिष्क संबंध वास्तविक है"]},
+    "doctor_visit": {"en": "See doctor if: No bowel movement for 3+ weeks despite treatment, blood in stool, severe abdominal pain, unexplained weight loss, new-onset constipation after age 50, or alternating constipation and diarrhea.", "hi": "डॉक्टर से मिलें अगर: उपचार के बावजूद 3+ हफ्ते से मल त्याग नहीं, मल में खून, गंभीर पेट दर्द, अस्पष्टीकृत वज़न कम, 50 के बाद नई कब्ज।"}
+  }
+};
+
+const CATEGORIES = {
+  "Digestive": { emoji: "🫁", count: "150+ diseases" },
+  "Cardiovascular": { emoji: "❤️", count: "80+ diseases" },
+  "Metabolic": { emoji: "⚗️", count: "60+ diseases" },
+  "Respiratory": { emoji: "🫁", count: "70+ diseases" },
+  "Endocrine": { emoji: "🦋", count: "40+ diseases" },
+  "Blood Disorders": { emoji: "🩸", count: "30+ diseases" },
+  "Musculoskeletal": { emoji: "🦴", count: "90+ diseases" },
+  "Infectious": { emoji: "🦠", count: "120+ diseases" },
+  "Skin": { emoji: "🧴", count: "100+ diseases" },
+  "Neurological": { emoji: "🧠", count: "60+ diseases" },
+  "Urinary": { emoji: "💧", count: "40+ diseases" },
+  "Mental Health": { emoji: "🌱", count: "50+ diseases" },
+  "Eye & ENT": { emoji: "👁️", count: "60+ diseases" },
+  "Reproductive": { emoji: "🌸", count: "50+ diseases" },
+  "Liver & Kidney": { emoji: "🫀", count: "40+ diseases" }
+};
+
+const EMERGENCY_SYMPTOMS_EN = ["chest pain", "chest tightness", "difficulty breathing", "unconscious", "heavy bleeding", "pregnancy complication", "stroke", "heart attack", "seizure", "overdose"];
+const EMERGENCY_SYMPTOMS_HI = ["सीने में दर्द", "सांस लेने में कठिनाई", "बेहोशी", "भारी रक्तस्राव", "गर्भावस्था जटिलता"];
+
+let currentLang = 'en';
+let searchHistory = [];
+let currentDisease = null;
+
+// ==================== UI FUNCTIONS ====================
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  if (currentDisease) renderDisease(currentDisease);
+}
+
+function t(en, hi) {
+  return currentLang === 'hi' ? hi : en;
+}
+
+function renderCategories() {
+  const grid = document.getElementById('categoriesGrid');
+  grid.innerHTML = Object.entries(CATEGORIES).map(([cat, data]) => `
+    <div class="category-card" onclick="quickSearch('${cat}')">
+      <div class="category-emoji">${data.emoji}</div>
+      <div class="category-name">${cat}</div>
+      <div class="category-count">${data.count}</div>
+    </div>
+  `).join('');
+}
+
+function handleInput(val) {
+  const sugg = document.getElementById('suggestions');
+  if (!val.trim()) { sugg.style.display = 'none'; return; }
+  
+  const lower = val.toLowerCase();
+  const matches = Object.values(DISEASES_DB).filter(d =>
+    d.name.en.toLowerCase().includes(lower) ||
+    d.name.hi.includes(val) ||
+    d.category.toLowerCase().includes(lower)
+  );
+
+  if (matches.length === 0) { sugg.style.display = 'none'; return; }
+
+  sugg.style.display = 'block';
+  sugg.innerHTML = matches.slice(0, 6).map(d => `
+    <div class="suggestion-item" onclick="selectSuggestion('${Object.keys(DISEASES_DB).find(k => DISEASES_DB[k] === d)}')">
+      <span>${d.emoji || '🏥'}</span>
+      <span>${d.name.en} / ${d.name.hi}</span>
+      <span class="suggestion-cat">${d.category}</span>
+    </div>
+  `).join('');
+}
+
+function handleKeydown(e) {
+  if (e.key === 'Enter') doSearch();
+}
+
+function selectSuggestion(key) {
+  document.getElementById('searchInput').value = DISEASES_DB[key].name.en;
+  document.getElementById('suggestions').style.display = 'none';
+  searchDisease(key);
+}
+
+function quickSearch(term) {
+  document.getElementById('searchInput').value = term;
+  doSearch();
+}
+
+function doSearch() {
+  const val = document.getElementById('searchInput').value.trim();
+  if (!val) return;
+  
+  // Check emergency symptoms
+  const lowerVal = val.toLowerCase();
+  const isEmergency = EMERGENCY_SYMPTOMS_EN.some(s => lowerVal.includes(s));
+  if (isEmergency) {
+    showEmergencyAlert();
+    return;
+  }
+
+  // Find in local DB
+  const key = findDiseaseKey(val);
+  if (key) {
+    searchDisease(key);
+  } else {
+    searchWithAI(val);
+  }
+  
+  document.getElementById('suggestions').style.display = 'none';
+}
+
+function findDiseaseKey(val) {
+  const lower = val.toLowerCase();
+  return Object.keys(DISEASES_DB).find(k => {
+    const d = DISEASES_DB[k];
+    return d.name.en.toLowerCase().includes(lower) ||
+           d.name.hi.includes(val) ||
+           k.includes(lower) ||
+           lower.includes(d.name.en.toLowerCase().split(' ')[0]);
+  });
+}
+
+function showEmergencyAlert() {
+  const resultCard = document.getElementById('resultCard');
+  resultCard.style.display = 'block';
+  document.getElementById('welcomeState').style.display = 'none';
+  resultCard.innerHTML = `
+    <div style="background:linear-gradient(135deg,#7B1A1A,#C0392B);padding:40px;text-align:center;border-radius:20px;color:white;">
+      <div style="font-size:64px;margin-bottom:16px;">🚨</div>
+      <h2 style="font-size:28px;margin-bottom:12px;color:#FFD700;">SEEK EMERGENCY MEDICAL CARE IMMEDIATELY</h2>
+      <p style="font-size:18px;margin-bottom:24px;color:rgba(255,255,255,0.9);">The symptoms you mentioned require immediate professional medical attention.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <div style="background:rgba(255,255,255,0.15);padding:16px 28px;border-radius:12px;font-size:20px;font-weight:700;">📞 Call 108</div>
+        <div style="background:rgba(255,255,255,0.15);padding:16px 28px;border-radius:12px;font-size:20px;font-weight:700;">🏥 Nearest Emergency Room</div>
+      </div>
+    </div>
+  `;
+}
+
+function searchDisease(key) {
+  const disease = DISEASES_DB[key];
+  currentDisease = disease;
+  setLoading(false);
+  document.getElementById('welcomeState').style.display = 'none';
+  document.getElementById('errorState').style.display = 'none';
+  renderDisease(disease);
+}
+
+async function searchWithAI(query) {
+  setLoading(true);
+  document.getElementById('welcomeState').style.display = 'none';
+  document.getElementById('errorState').style.display = 'none';
+  document.getElementById('resultCard').style.display = 'none';
+  document.getElementById('loadingText').textContent = `Searching health information for "${query}"...`;
+
+  const systemPrompt = `You are SwasthyaSetu AI - a Trustworthy AI Healthcare Assistant focused on Indian health. 
+
+STRICT RULES:
+- You are NOT a doctor. You do NOT diagnose. You do NOT prescribe dosages.
+- You NEVER claim to cure any disease.
+- Focus on Indian diet, foods, and lifestyle.
+- If user mentions EMERGENCY symptoms (chest pain, breathing difficulty, unconsciousness, heavy bleeding), say SEEK EMERGENCY CARE IMMEDIATELY.
+- Always recommend consulting a qualified doctor.
+- Use simple language understandable to common Indians.
+
+Respond ONLY in this exact JSON format (no markdown, no backticks):
+{
+  "name_en": "Disease name in English",
+  "name_hi": "Disease name in Hindi",
+  "category": "Medical category",
+  "emoji": "Relevant emoji",
+  "overview_en": "Brief 2-3 sentence overview",
+  "overview_hi": "Same in Hindi",
+  "symptoms_en": ["symptom1", "symptom2", "symptom3", "symptom4"],
+  "symptoms_hi": ["लक्षण1", "लक्षण2"],
+  "eat_en": ["food1 - reason", "food2 - reason", "food3 - reason", "food4 - reason"],
+  "eat_hi": ["खाद्य पदार्थ - कारण"],
+  "avoid_en": ["food1 - reason", "food2 - reason", "food3 - reason"],
+  "avoid_hi": ["खाद्य पदार्थ - कारण"],
+  "home_remedies_en": ["remedy1", "remedy2", "remedy3"],
+  "home_remedies_hi": ["उपाय1", "उपाय2"],
+  "ayurvedic_en": ["tip1", "tip2"],
+  "ayurvedic_hi": ["टिप1", "टिप2"],
+  "medicine_en": "Educational medicine awareness text (NO dosages)",
+  "medicine_hi": "Hindi medicine awareness",
+  "prevention_en": ["tip1", "tip2", "tip3"],
+  "prevention_hi": ["टिप1", "टिप2"],
+  "doctor_en": "When to see doctor",
+  "doctor_hi": "डॉक्टर से कब मिलें"
+}`;
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: "user", content: `Provide health information for: ${query}` }]
+      })
+    });
+
+    const data = await response.json();
+    setLoading(false);
+
+    if (data.error) throw new Error(data.error.message);
+
+    const text = data.content.map(c => c.text || '').join('').trim();
+    const clean = text.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(clean);
+
+    // Convert AI response to our format
+    const aiDisease = {
+      name: { en: parsed.name_en, hi: parsed.name_hi },
+      category: parsed.category,
+      emoji: parsed.emoji || '🏥',
+      icd_code: 'AI',
+      overview: { en: parsed.overview_en, hi: parsed.overview_hi },
+      symptoms: { en: parsed.symptoms_en, hi: parsed.symptoms_hi },
+      eat: { en: parsed.eat_en, hi: parsed.eat_hi },
+      avoid: { en: parsed.avoid_en, hi: parsed.avoid_hi },
+      home_remedies: { en: parsed.home_remedies_en, hi: parsed.home_remedies_hi },
+      ayurvedic_tips: { en: parsed.ayurvedic_en, hi: parsed.ayurvedic_hi },
+      medicine_awareness: { en: parsed.medicine_en, hi: parsed.medicine_hi },
+      prevention: { en: parsed.prevention_en, hi: parsed.prevention_hi },
+      doctor_visit: { en: parsed.doctor_en, hi: parsed.doctor_hi }
+    };
+
+    currentDisease = aiDisease;
+    renderDisease(aiDisease);
+
+  } catch (err) {
+    setLoading(false);
+    showError(`Could not find information for "${query}". Please try a more specific disease name, or check your internet connection.`);
+  }
+}
+
+function setLoading(show) {
+  document.getElementById('loadingState').style.display = show ? 'block' : 'none';
+  const btn = document.getElementById('searchBtn');
+  const btnText = document.getElementById('searchBtnText');
+  if (show) {
+    btn.disabled = true;
+    btnText.innerHTML = '<span class="spinner"></span> Searching...';
+  } else {
+    btn.disabled = false;
+    btnText.innerHTML = '🔍 Search';
+  }
+}
+
+function showError(msg) {
+  document.getElementById('errorState').style.display = 'block';
+  document.getElementById('errorText').textContent = msg;
+  document.getElementById('resultCard').style.display = 'none';
+}
+
+function renderDisease(disease) {
+  const L = currentLang;
+  const resultCard = document.getElementById('resultCard');
+  resultCard.style.display = 'block';
+
+  const name = disease.name[L] || disease.name.en;
+  const nameOther = disease.name[L === 'en' ? 'hi' : 'en'];
+  const overview = disease.overview[L] || disease.overview.en;
+  const symptoms = disease.symptoms[L] || disease.symptoms.en;
+  const eat = disease.eat[L] || disease.eat.en;
+  const avoid = disease.avoid[L] || disease.avoid.en;
+  const remedies = disease.home_remedies[L] || disease.home_remedies.en;
+  const ayur = disease.ayurvedic_tips[L] || disease.ayurvedic_tips.en;
+  const med = typeof disease.medicine_awareness === 'object' ?
+    (disease.medicine_awareness[L] || disease.medicine_awareness.en) : disease.medicine_awareness;
+  const prevention = disease.prevention[L] || disease.prevention.en;
+  const doctor = typeof disease.doctor_visit === 'object' ?
+    (disease.doctor_visit[L] || disease.doctor_visit.en) : disease.doctor_visit;
+
+  const labels = {
+    symptoms: L === 'hi' ? ['🤒 लक्षण', 'Symptoms'] : ['🤒 Symptoms', 'लक्षण'],
+    eat: L === 'hi' ? ['✅ क्या खाएं', 'Foods to Eat'] : ['✅ Foods to EAT', 'क्या खाएं'],
+    avoid: L === 'hi' ? ['❌ क्या न खाएं', 'Foods to Avoid'] : ['❌ Foods to AVOID', 'क्या न खाएं'],
+    remedies: L === 'hi' ? ['🌿 घरेलू उपाय', 'Home Remedies'] : ['🌿 Home Remedies', 'घरेलू उपाय'],
+    ayur: L === 'hi' ? ['🪔 आयुर्वेदिक सुझाव', 'Ayurvedic Tips'] : ['🪔 Ayurvedic Tips', 'आयुर्वेदिक सुझाव'],
+    med: L === 'hi' ? ['💊 दवा जागरूकता', 'Medicine Awareness'] : ['💊 Medicine Awareness', 'दवा जागरूकता'],
+    prev: L === 'hi' ? ['🛡️ रोकथाम', 'Prevention'] : ['🛡️ Prevention', 'रोकथाम'],
+    doctor: L === 'hi' ? ['🚨 डॉक्टर से कब मिलें', 'When to See Doctor'] : ['🚨 When to See a Doctor', 'डॉक्टर से कब मिलें'],
+    overview: L === 'hi' ? '📋 रोग अवलोकन' : '📋 Disease Overview'
+  };
+
+  const listHTML = (items, bulletClass, icon) => items.map(item => `
+    <li>
+      <span class="item-bullet ${bulletClass}">${icon}</span>
+      <span>${item}</span>
+    </li>
+  `).join('');
+
+  resultCard.innerHTML = `
+    <div class="disease-header">
+      <div class="disease-title-block">
+        <div class="disease-name">${name}</div>
+        <div class="disease-name-hindi">${nameOther}</div>
+        <div class="disease-meta">
+          ${disease.icd_code && disease.icd_code !== 'AI' ? `<span class="meta-badge meta-icd">ICD: ${disease.icd_code}</span>` : '<span class="meta-badge meta-icd">AI Generated</span>'}
+          <span class="meta-badge meta-cat">${disease.category}</span>
+        </div>
+      </div>
+      <div class="disease-emoji">${disease.emoji || '🏥'}</div>
+    </div>
+
+    <div class="disease-overview">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--saffron);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">${labels.overview}</div>
+      <p class="overview-text">${overview}</p>
+    </div>
+
+    <div class="sections-grid">
+      
+      <!-- SYMPTOMS -->
+      <div class="section-block section-symptoms">
+        <div class="section-header">
+          <div class="section-icon">🤒</div>
+          <div>
+            <div class="section-title" style="color:#B8860B;">${labels.symptoms[0]}</div>
+            <span class="section-title-hindi">${labels.symptoms[1]}</span>
+          </div>
+        </div>
+        <ul class="item-list">${listHTML(symptoms, 'default-bullet', '•')}</ul>
+      </div>
+
+      <!-- PREVENTION -->
+      <div class="section-block section-prevention">
+        <div class="section-header">
+          <div class="section-icon">🛡️</div>
+          <div>
+            <div class="section-title" style="color:var(--prev-color);">${labels.prev[0]}</div>
+            <span class="section-title-hindi">${labels.prev[1]}</span>
+          </div>
+        </div>
+        <ul class="item-list">${listHTML(prevention, 'default-bullet', '✓')}</ul>
+      </div>
+
+      <!-- EAT -->
+      <div class="section-block section-eat">
+        <div class="section-header">
+          <div class="section-icon">🥗</div>
+          <div>
+            <div class="section-title">${labels.eat[0]}</div>
+            <span class="section-title-hindi">${labels.eat[1]}</span>
+          </div>
+        </div>
+        <ul class="item-list">${listHTML(eat, 'eat-bullet', '✓')}</ul>
+      </div>
+
+      <!-- AVOID -->
+      <div class="section-block section-avoid">
+        <div class="section-header">
+          <div class="section-icon">🚫</div>
+          <div>
+            <div class="section-title">${labels.avoid[0]}</div>
+            <span class="section-title-hindi">${labels.avoid[1]}</span>
+          </div>
+        </div>
+        <ul class="item-list">${listHTML(avoid, 'avoid-bullet', '✗')}</ul>
+      </div>
+
+      <!-- HOME REMEDIES -->
+      <div class="section-block section-remedies">
+        <div class="section-header">
+          <div class="section-icon">🌿</div>
+          <div>
+            <div class="section-title">${labels.remedies[0]}</div>
+            <span class="section-title-hindi">${labels.remedies[1]}</span>
+          </div>
+        </div>
+        <ul class="item-list">${listHTML(remedies, 'default-bullet', '🌿')}</ul>
+      </div>
+
+      <!-- AYURVEDA -->
+      <div class="section-block section-ayurveda">
+        <div class="section-header">
+          <div class="section-icon">🪔</div>
+          <div>
+            <div class="section-title">${labels.ayur[0]}</div>
+            <span class="section-title-hindi">${labels.ayur[1]}</span>
+          </div>
+        </div>
+        <ul class="item-list">${listHTML(ayur, 'default-bullet', '🕉')}</ul>
+      </div>
+
+    </div>
+
+    <!-- MEDICINE AWARENESS (full width) -->
+    <div class="section-full section-medicine">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(26,95,122,0.12);">💊</div>
+        <div>
+          <div class="section-title" style="color:var(--med-color);">${labels.med[0]}</div>
+          <span class="section-title-hindi">${labels.med[1]}</span>
+        </div>
+      </div>
+      <div class="medicine-text">${med}</div>
+    </div>
+
+    <!-- DOCTOR VISIT (full width) -->
+    <div class="section-full section-doctor">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(198,40,40,0.12);">🚨</div>
+        <div>
+          <div class="section-title" style="color:var(--doctor-color);">${labels.doctor[0]}</div>
+          <span class="section-title-hindi">${labels.doctor[1]}</span>
+        </div>
+      </div>
+      <div class="doctor-alert">${doctor}</div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer-block">
+      <div class="disclaimer-icon">⚠️</div>
+      <div class="disclaimer-text">
+        <strong>Medical Disclaimer / चिकित्सा अस्वीकरण:</strong>
+        ${L === 'hi' 
+          ? 'यह जानकारी केवल शैक्षणिक उद्देश्यों के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। निदान और उपचार के लिए हमेशा एक योग्य डॉक्टर से परामर्श करें।'
+          : 'This information is for educational purposes only and does not replace professional medical advice. Always consult a qualified doctor or healthcare provider for diagnosis and treatment. Emergency symptoms require immediate medical attention.'
+        }
+      </div>
+    </div>
+  `;
+
+  resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ==================== INIT ====================
+renderCategories();
+
+// Close suggestions on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-container')) {
+    document.getElementById('suggestions').style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>
