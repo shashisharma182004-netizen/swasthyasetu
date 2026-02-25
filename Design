@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Swasthya Setu Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d9488", // Teal 600 - soothing medical green/teal
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl">
+<!-- Header -->
+<header class="flex items-center justify-between px-6 pt-6 pb-2">
+<div class="flex items-center gap-3">
+<div class="size-10 overflow-hidden rounded-full border-2 border-primary/20">
+<img class="h-full w-full object-cover" data-alt="Profile photo of a friendly female doctor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWVElvQivAdZWDhErYiF-SToxjN7lx5IQVJwbNVhCRP9CiIFOy--7WeBojYdO6fl1LazBFZIVmQaqcBRhgh1pXUuz-MSjg4tXWZrtXQK1KWiP46QI3AnP84ZUkLNJrpVU2oVdU6eIocFN0flnMFKBqQsZCA5Hd8tOFhKGsE66vc0PF6yyfUMlgHcO9XnJgALWyb6vkNwo2uiPHo_flx4ZQAeVCpTDIOzUKoPvdmggpvkz8tOIOePtfVfV-fmS1tF4PkfGCVBE1W_cw"/>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Welcome back,</p>
+<h1 class="text-lg font-bold leading-tight">Alex Johnson</h1>
+</div>
+</div>
+<button class="relative p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500 border border-white"></span>
+</button>
+</header>
+<!-- Search Section -->
+<div class="px-6 py-4">
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full rounded-xl border-none bg-slate-100 dark:bg-slate-800 py-3 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-400" placeholder="Doctors, hospitals, or services" type="text"/>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto hide-scrollbar pb-24">
+<!-- Health Carousel -->
+<section class="mt-2">
+<div class="flex items-center justify-between px-6 mb-3">
+<h2 class="text-base font-bold">Health Insights</h2>
+<button class="text-xs font-semibold text-primary">See All</button>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-4 px-6 snap-x">
+<div class="min-w-[280px] snap-center">
+<div class="relative h-44 w-full overflow-hidden rounded-2xl bg-primary/10">
+<img class="h-full w-full object-cover opacity-90" data-alt="Yoga practitioner in a peaceful morning setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9P76y73AlB0NJhANKIMMW4aqrbomyW55LtIXOzTdedqW3SalrgRMrBmu61SjSBvNdT6gRPH_FsFDDsoEoJ_srv-9R5Rv979qrDzhO3ZQZDLaFMARDT8fE_P5Ao4hqbPh2cj55Aeku7HtJMDig7ITQHARsdbg2Q5PNPuuK9w71DQnZgD0HzLhy20UF-bRvZ5bPgjlZW-ZdVWIjLCqr0jIQNFlDR8db9C6Z44gdXmJ1D7B6Z8941BuKXKmI2QeYN0jbBxOa7jJOd9iA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end">
+<span class="w-fit px-2 py-0.5 rounded-full bg-primary text-[10px] font-bold text-white mb-2 uppercase tracking-wider">Wellness</span>
+<h3 class="text-white font-semibold text-sm">5 Morning Habits for Mental Clarity</h3>
+</div>
+</div>
+</div>
+<div class="min-w-[280px] snap-center">
+<div class="relative h-44 w-full overflow-hidden rounded-2xl bg-primary/10">
+<img class="h-full w-full object-cover opacity-90" data-alt="Healthy organic meal preparation with vegetables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5ev_cA4ojxK5GPzbEeN_J1FVKV9P-qGoteDoKsjKTpLiuFXaxI-rQ4-bcv6qgmWm1hs5awgVp2QsKh_8Ca8gCfaCUVfQUxw5LE2T8MMcqNhoMfxGJdHri2UZIhdVGkD4dSvzKAZVLIvH6PsCd-MUcVVmujEEE9b2KydzSxsvKHs_ta9DNo762ZuXTAuz0LQcx30vSCD2EGXHGhzLVPI2mjdnh06EfrzjYHuRfMayq04Y6a9inDDjI-YVHOTCtmCN0JZE70kjRc8dB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end">
+<span class="w-fit px-2 py-0.5 rounded-full bg-emerald-500 text-[10px] font-bold text-white mb-2 uppercase tracking-wider">Nutrition</span>
+<h3 class="text-white font-semibold text-sm">Superfoods to Boost Immunity</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions Grid -->
+<section class="mt-8 px-6">
+<h2 class="text-base font-bold mb-4">Quick Actions</h2>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center p-5 rounded-2xl bg-primary/5 dark:bg-primary/10 border border-primary/10 hover:border-primary/40 transition-all">
+<div class="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-3xl">event_available</span>
+</div>
+<span class="text-sm font-semibold">Book Visit</span>
+</button>
+<button class="flex flex-col items-center justify-center p-5 rounded-2xl bg-teal-500/5 dark:bg-teal-500/10 border border-teal-500/10 hover:border-teal-500/40 transition-all">
+<div class="size-12 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-600 mb-3">
+<span class="material-symbols-outlined text-3xl">medication</span>
+</div>
+<span class="text-sm font-semibold">Order Medicine</span>
+</button>
+<button class="flex flex-col items-center justify-center p-5 rounded-2xl bg-sky-500/5 dark:bg-sky-500/10 border border-sky-500/10 hover:border-sky-500/40 transition-all">
+<div class="size-12 rounded-xl bg-sky-500/20 flex items-center justify-center text-sky-600 mb-3">
+<span class="material-symbols-outlined text-3xl">description</span>
+</div>
+<span class="text-sm font-semibold">Lab Reports</span>
+</button>
+<button class="flex flex-col items-center justify-center p-5 rounded-2xl bg-indigo-500/5 dark:bg-indigo-500/10 border border-indigo-500/10 hover:border-indigo-500/40 transition-all">
+<div class="size-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-600 mb-3">
+<span class="material-symbols-outlined text-3xl">videocam</span>
+</div>
+<span class="text-sm font-semibold">Tele-Consult</span>
+</button>
+</div>
+</section>
+<!-- Upcoming Appointment Card -->
+<section class="mt-8 px-6">
+<div class="rounded-2xl bg-slate-900 p-5 text-white">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-slate-400 text-xs font-medium">Upcoming Appointment</p>
+<h3 class="text-base font-bold mt-1">Dr. Sarah Mitchell</h3>
+<p class="text-xs text-primary font-medium">Cardiologist • City Hospital</p>
+</div>
+<div class="bg-primary px-3 py-1 rounded-lg text-center">
+<p class="text-[10px] font-bold uppercase leading-tight">Oct</p>
+<p class="text-lg font-bold leading-tight">14</p>
+</div>
+</div>
+<div class="flex items-center gap-4 border-t border-slate-800 pt-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-300">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            10:30 AM
+                        </div>
+<div class="flex items-center gap-1.5 text-xs text-slate-300">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            Room 204, Floor 2
+                        </div>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="absolute bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-6 pb-6 pt-3 flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-medium">Appointments</span>
+</a>
+<div class="relative -top-8">
+<button class="size-14 rounded-full bg-primary text-white shadow-lg shadow-primary/40 flex items-center justify-center border-4 border-white dark:border-slate-900">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-medium">Messages</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>
